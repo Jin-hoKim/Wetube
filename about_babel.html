@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Babel</title>
+    <style>
+        h1, h5 {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            font-size: 13px;
+            font-weight: 600;
+            color: black;
+        }
+        .descript {
+            display: flex;
+            flex-flow: column;
+            justify-content: flex-start;
+            padding-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Babel is JavaScript Compiler</h1>
+    <a href="https://babeljs.io/">link BabelJS</a>
+    <p />
+    <h5>1. Install Babel</h5>
+    <div class="descript">
+        <small>1-1. Install babel node : <b>install @babel/node</b></small>
+        <small>1-2. Install babel preset-env : <b>npm install @babel/preset-env</b></small>
+        <small>1-3. Install babel core : <b>npm install @babel/core</b></small>
+    </div>
+    <p />
+    <h5>2. Create file ".babelrc" and write Preset</h5>
+    <pre>
+    {
+        "presets": [
+            [
+            "@babel/preset-env",
+            {
+                "useBuiltIns": "entry"
+            }
+            ]
+        ]
+    }
+    </pre>
+
+    <h5>3. Edit file "package.json"</h5>
+    <pre>
+    ...
+
+    "scripts": {
+        "start": "babel-node index.js"
+    },
+
+    ...
+    </pre>
+
+    <h5>Etc. Install "nodemon" </h5>
+    <small>If when you modify source code and save, auto-restart server</small>
+    <div class="descript">
+        <small>1. Install nodemon : npm install nodemon -D</small>
+        <pre>
+        "devDependencies": {
+            "nodemon": "^1.18.11"
+        }
+        </pre>
+        <small>2. Edit file package.json</small>
+        <pre>
+        ...
+
+        "scripts": {
+            "start": "nodemon --exec babel-node index.js --delay 2" // restart server after 2 sec 
+        },
+
+        ...
+        </pre>
+    </div>
+</body>
+</html>
