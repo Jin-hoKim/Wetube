@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Middleware</title>
     <style>
+        :root {
+            --redColor: red;
+            --yellowColor: yellowgreen;
+            --cyanColor: cyan;
+            --nonColor: gray;
+        }
         h1,h5 {
             margin: 0;
             padding: 0;
@@ -24,16 +30,16 @@
             flex-flow: column;
         }
         .color_red {
-            color: red;
+            color: var(--redColor);
         }
         .color_yellow {
-            color: yellowgreen;
+            color: var(--yellowColor);
         }
         .color_cyan {
-            color: cyan;
+            color: var(--cyanColor);
         }
         .color_grey {
-            color: gray;
+            color: var(--nonColor);
         }
 
     </style>

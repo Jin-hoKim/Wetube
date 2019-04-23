@@ -1,27 +1,27 @@
 export const users = (req, res) => {
-    res.send("Users");
+    res.render("userDetail.pug");
 }
 
-export const detail = (req, res) => {
-    res.send("User detail");
+export const userDetail = (req, res) => {
+    res.render("userDetail.pug");
 }
 
-export const edit = (req, res) => {
-    res.send("Edit user");
+export const userEditProfile = (req, res) => {
+    res.render("editProfile.pug");
 }
 
-export const changePassword = (req, res) => {
-    res.send("Change password");
+export const userChangePassword = (req, res) => {
+    res.render("changePassword.pug");
 }
 
 export const join = (req, res) => {
-    res.send("Join");
+    res.render("join.pug");
 }
 
 export const login = (req, res) => {
-    res.send("Login");
+    res.render("login.pug");
 }
 
 export const logout = (req, res) => {
-    res.send("Logout");
+    res.render("logout.pug");
 }

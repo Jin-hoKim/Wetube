@@ -1,23 +1,24 @@
 export const home = (req, res) => {
-    res.send("Home");
+    // res.send("Home");
+    res.render("home.pug");
 }
 
 export const search = (req, res) => {
-    res.send("Search");
+    res.render("search.pug");
 }
 
-export const upload = (req, res) => {
-    res.send("Upload");
+export const videoUpload = (req, res) => {
+    res.render("videoUpload.pug");
 }
 
-export const detail = (req, res) => {
-    res.send("Video Detail");
+export const videoDetail = (req, res) => {
+    res.render("videoDetail.pug");
 }
 
-export const edit = (req, res) => {
-    res.send("Vidoe Edit");
+export const videoEdit = (req, res) => {
+    res.render("videoEdit.pug");
 }
 
-export const deleteVideo = (req, res) => {
-    res.send("Delete video");
+export const videoDelete = (req, res) => {
+    res.render("videoDelete.pug");
 }

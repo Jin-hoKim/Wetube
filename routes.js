@@ -8,15 +8,15 @@ const SEARCH = "/search";
 // USERS
 const USERS = "/users";
 const USER_DETAIL = "/:id";
-const EDIT_PROFILE = "/edit-profile";
-const CHANGE_PASSWORD = "/change-password";
+const USER_EDIT_PROFILE = "/edit-profile";
+const USER_CHANGE_PASSWORD = "/change-password";
 
 // VIDEO
 const VIDEOS = "/videos";
-const UPLOAD = "/upload";
+const VIDEO_UPLOAD = "/upload";
 const VIDEO_DETAIL = "/:id";
-const EDIT_VIDEO = "/:id/edit";
-const DELETE_VIDEO = "/:id/delete";
+const VIDEO_EDIT = "/:id/edit";
+const VIDEO_DELETE = "/:id/delete";
 
 const routes = {
     home: HOME,
@@ -26,13 +26,13 @@ const routes = {
     search: SEARCH,
     users: USERS,
     userDetail: USER_DETAIL,
-    editProfile: EDIT_PROFILE,
-    changePassword: CHANGE_PASSWORD,
+    userEditProfile: USER_EDIT_PROFILE,
+    userChangePassword: USER_CHANGE_PASSWORD,
     videos: VIDEOS,
-    upload: UPLOAD,
+    videoUpload: VIDEO_UPLOAD,
     videoDetail: VIDEO_DETAIL,
-    editVideo: EDIT_VIDEO,
-    deleteVideo: DELETE_VIDEO
+    videoEdit: VIDEO_EDIT,
+    videoDelete: VIDEO_DELETE
 };
 
 export default routes;

@@ -1,3 +1,5 @@
+import pug from 'pug';
+
 import morgan from 'morgan';
 import express from 'express';
 import helmet from 'helmet';
@@ -10,6 +12,9 @@ import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
 
 var app = express();
+
+// engines
+app.set("view_engine", pug);
 
 // middleware
 app.use(cookieParser());
