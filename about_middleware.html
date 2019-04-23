@@ -45,17 +45,11 @@
     </div>
     <a href="https://www.npmjs.com/package/morgan">Link</a>
     <p />
-    <h5>How to Use</h5>
+    <h5>How to</h5>
     <div class="descript">
-        <small>1-1. Install : <b>npm install morgan</b></small>
-        <small>1-2. Import : <b>Import morgan from 'morgan';</b></small>
-        <small>1-3. Use : <b>app.use(morgan(options));</b></small>
-        <small class="descript_title"><b>Options</b></small>
-        <div class="descript">
-            <small><b>immediat</b> : Write log line on request instead of response. This means that a requests will be logged even if the server crashes, but data from the response (like the response code, content length, etc.) cannot be logged.</small>
-            <small><b>skip</b> : Function to determine if logging is skipped, default to false.</small>
-            <small><b>stream</b> : Output stream for writing log lines, default to process. stdout.</small>
-        </div>
+        <small><b>Install</b> : npm install morgan</small>
+        <small><b>Import</b> : Import morgan from 'morgan';</small>
+        <small><b>Use</b> : app.use(morgan(format,options));</small>
         <small class="descript_title"><b>Predefined Formats</b></small>
         <div class="descript">
             <small><b>combined</b> : Standard Apache combined log output.</small>
@@ -71,21 +65,27 @@
             <small><b>short</b> : Shorter than default, also including response time.</small>
             <small><b>tiny</b> : The minimal output.</small>
         </div>
+        <small class="descript_title"><b>Options</b></small>
+        <div class="descript">
+            <small><b>immediat</b> : Write log line on request instead of response. This means that a requests will be logged even if the server crashes, but data from the response (like the response code, content length, etc.) cannot be logged.</small>
+            <small><b>skip</b> : Function to determine if logging is skipped, default to false.</small>
+            <small><b>stream</b> : Output stream for writing log lines, default to process. stdout.</small>
+        </div>
     </div>
     
     <hr />
     
     <div class="header">
         <h1>2. Helmet</h1>
-        <small> : Helmet helps you secure your Express app by setting various HTTP headers. It's not a silver bullet, but it can help! </small>
+        <small> : Helmet helps you secure your Express app by setting various HTTP headers. </small>
     </div>
     <a href="https://www.npmjs.com/package/helmet">Link</a>
     <p />
-    <h5>How to Use</h5>
+    <h5>How to</h5>
     <div class="descript">
-        <small>2-1. Install : <b>npm install helmet</b></small>
-        <small>2-2. Import : <b>import helmet from 'helmet';</b></small>
-        <small>2-3. Use : <b>app.use(helmet());</b></small>
+        <small><b>Install</b> : npm install helmet</small>
+        <small><b>Import</b> : import helmet from 'helmet';</small>
+        <small><b>Use</b> : app.use(helmet());</small>
     </div>
 
     <hr />
@@ -96,11 +96,18 @@
     </div>
     <a href="https://www.npmjs.com/package/body-parser">Link</a>
     <p />
-    <h5>How to Use</h5>
+    <h5>How to</h5>
     <div class="descript">
-        <small>3-1. Install : <b>npm install body-parser</b></small>
-        <small>3-2. Import : <b>import bodyPaser from 'body-parser';</b></small>
-        <small>3-3. Use : <b>app.use(bodyParser.json());</b></small>
+        <small><b>Install</b> : npm install body-parser</small>
+        <small><b>Import</b> : import bodyPaser from 'body-parser';</small>
+        <small><b>Use</b> : app.use(bodyParser.json());</small>
+    </div>
+    <small class="descript_title"><b>Parsers</b></small>
+    <div class="descript">
+        <small><a href="https://www.npmjs.com/package/body-parser#bodyparserjsonoptions">JSON body parser</a></small>
+        <small><a href="https://www.npmjs.com/package/body-parser#bodyparserrawoptions">Raw body parser</a></small>
+        <small><a href="https://www.npmjs.com/package/body-parser#bodyparsertextoptions">Text body parser</a></small>
+        <small><a href="https://www.npmjs.com/package/body-parser#bodyparserurlencodedoptions">URL-encoded from body parser</a></small>
     </div>
 
     <hr />
@@ -111,11 +118,18 @@
     </div>
     <a href="https://www.npmjs.com/package/cookie-parser">Link</a>
     <p />
-    <h5>How to Use</h5>
+    <h5>How to</h5>
     <div class="descript">
-        <small>4-1. Install : <b>npm install cookie-parser</b></small>
-        <small>4-2. Import : <b>import cookieParser from 'cookie-parser';</b></small>
-        <small>4-3. Use : <b>app.use(cookieParser());</b></small>
+        <small><b>Install</b> : npm install cookie-parser</small>
+        <small><b>Import</b> : import cookieParser from 'cookie-parser';</small>
+        <small><b>Use</b> : app.use(cookieParser());</small>
+    </div>
+    <small class="descript_title"><b>Parse Cookies</b></small>
+    <div class="descript">
+        <small>cookieParser.JSONCookie(str)</small>
+        <small>cookieParser.JSONCookies(cookies)</small>
+        <small>cookieParser.signedCookie(str,secret)</small>
+        <small>cookieParser.signedCookies(cookies,secret)</small>
     </div>
 </body>
 </html>
