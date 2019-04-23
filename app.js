@@ -10,18 +10,23 @@ import routes from "./routes";
 import globalRouter from './routers/globalRouter';
 import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
+import { localMiddleware } from './middlewares';
 
 var app = express();
+
+
+// middleware
+app.use(helmet());
 
 // engines
 app.set("view_engine", pug);
 
-// middleware
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(helmet());
 app.use(morgan("dev"));
+
+app.use(localMiddleware);
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
