@@ -1,6 +1,8 @@
+import { videos } from "../db";
+
 export const home = (req, res) => {
     // res.send("Home");
-    res.render("home.pug", {pageTitle:"HOME"});
+    res.render("home.pug", {pageTitle:"HOME", videos});
 }
 
 export const search = (req, res) => {
