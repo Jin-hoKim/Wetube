@@ -36,8 +36,12 @@ export const postJoin = (req, res) => {
 
 }
 
-export const login = (req, res) => {
+export const getLogin = (req, res) => {
     res.render("login.pug", {pageTitle: "Login"});
+}
+
+export const postLogin = (req, res ) => {
+    res.redirect(routes.home);
 }
 
 export const logout = (req, res) => {
