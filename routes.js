@@ -8,8 +8,8 @@ const SEARCH = "/search";
 // USERS
 const USERS = "/users";
 const USER_DETAIL = "/:id";
-const USER_EDIT_PROFILE = "/edit-profile";
-const USER_CHANGE_PASSWORD = "/change-password";
+const USER_EDIT_PROFILE = "/:id/edit-profile";
+const USER_CHANGE_PASSWORD = "/:id/change-password";
 
 // VIDEO
 const VIDEOS = "/videos";
@@ -25,18 +25,30 @@ const routes = {
     logout: LOGOUT,
     search: SEARCH,
     users: USERS,
-    userDetail: (id) => {
+    userDetail: id => {
         return id ? USERS + `/${id}` : USER_DETAIL;
     },
-    userEditProfile: USER_EDIT_PROFILE,
-    userChangePassword: USER_CHANGE_PASSWORD,
+    userEditProfile: id => {
+        return id ? USERS + `/${id}/edit-profile` : USER_EDIT_PROFILE;
+    },
+    userChangePassword: id => {
+        return id ? USERS + `/${id}/change-password` : USER_CHANGE_PASSWORD;
+    },
+
+
     videos: VIDEOS,
-    videoUpload: VIDEO_UPLOAD,
-    videoDetail: (id) => {
+    videoDetail: id => {
         return id ? VIDEOS + `/${id}` : VIDEO_DETAIL;
     },
-    videoEdit: VIDEO_EDIT,
-    videoDelete: VIDEO_DELETE
+    videoEdit: id => {
+        // return id ? VIDEOS + `/${id}/edit` : VIDEO_EDIT;
+        return VIDEO_EDIT;
+    },
+    videoDelete: id => {
+        // return id ? VIDEOS + `/${id}/delete` : VIDEO_DELETE;
+        return VIDEO_DELETE;
+    },
+    videoUpload: VIDEO_UPLOAD
 };
 
 export default routes;

@@ -21,8 +21,7 @@ export const getJoin = (req, res) => {
 }
 
 export const postJoin = (req, res) => {
-    console.log(req.body);
-    
+    // console.log(req.body);
     const {
         body: {name, email, password, password2}
     } = req;
@@ -45,5 +44,7 @@ export const postLogin = (req, res ) => {
 }
 
 export const logout = (req, res) => {
-    res.render("logout.pug", {pageTitle: "Logout"});
+    // res.render("logout.pug", {pageTitle: "Logout"});
+    // to do : 
+    res.redirect(routes.home);
 }

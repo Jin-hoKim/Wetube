@@ -6,6 +6,9 @@ export const localMiddleware = (req, res, next) => {
     res.locals.user = {
         isAuthenticated: true,
         id: 1
-    }
+    };
+    res.locals.video = {
+        id: 1
+    };
     next();
 };

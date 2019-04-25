@@ -1,4 +1,5 @@
 import { videos } from "../db";
+import routes from "../routes";
 
 export const home = (req, res) => {
     // res.send("Home");
@@ -17,12 +18,22 @@ export const search = (req, res) => {
     res.render("search.pug", {pageTitle:"Search", searchingBy, videos});
 }
 
-export const videoUpload = (req, res) => {
-    res.render("videoUpload.pug", {pageTitle:"Upload"});
+export const getVideoUpload = (req, res) => {
+    res.render("videoUpload.pug", {pageTitle:"Upload Video"});
+}
+
+export const postVideoUpload = (req, res) => {
+    const {
+        body: {file, title, description}
+    } = req;
+
+    console.log( req.body );
+
+    res.redirect( routes.videoDetail(1) );
 }
 
 export const videoDetail = (req, res) => {
-    res.render("videoDetail.pug", {pageTitle: "Detail"});
+    res.render("videoDetail.pug", {pageTitle: "Video Detail"});
 }
 
 export const videoEdit = (req, res) => {

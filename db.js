@@ -1,6 +1,6 @@
 export const videos = [
     {
-        id:123123,
+        id:1,
         title: 'Video 123123',
         description: 'Face video 123123',
         views: 123123,
@@ -12,7 +12,7 @@ export const videos = [
         }
     },
     {
-        id:12341234,
+        id:2,
         title: 'Video 12341234',
         description: 'Face video 12341234',
         views: 12341234,
@@ -24,7 +24,7 @@ export const videos = [
         }
     },
     {
-        id:1234512345,
+        id:3,
         title: 'Video 1234512345',
         description: 'Face video 1234512345',
         views: 1234512345,
