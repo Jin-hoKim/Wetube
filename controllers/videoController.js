@@ -1,9 +1,17 @@
-import { videos } from "../db";
 import routes from "../routes";
+import Video from "../models/Video";
 
-export const home = (req, res) => {
+export const home = async (req, res) => {
     // res.send("Home");
-    res.render("home.pug", {pageTitle:"HOME", videos});
+    // const videos = await Video.find({}); >> no good
+    try {
+        const videos = await Video.find({});
+        console.log( videos );
+        res.render("home.pug", {pageTitle:"HOME", videos});
+    } catch( error ) {
+        console.log( error );
+        res.render("home.pug", {pageTitle:"HOME", videos: []});        
+    }
 }
 
 export const search = (req, res) => {
@@ -22,14 +30,25 @@ export const getVideoUpload = (req, res) => {
     res.render("videoUpload.pug", {pageTitle:"Upload Video"});
 }
 
-export const postVideoUpload = (req, res) => {
+export const postVideoUpload = async (req, res) => {
+    // const {
+    //     body: {file, title, description}
+    // } = req;
+
     const {
-        body: {file, title, description}
+        body: { title, description},
+        file: { path }
     } = req;
 
-    console.log( req.body );
+    const newVideo = await Video.create({
+        fileUrl: path,
+        title,
+        description,
+    });
 
-    res.redirect( routes.videoDetail(1) );
+    console.log( newVideo );
+
+    res.redirect( routes.videoDetail( newVideo.id ) );
 }
 
 export const videoDetail = (req, res) => {
