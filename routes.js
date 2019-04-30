@@ -41,8 +41,7 @@ const routes = {
         return id ? VIDEOS + `/${id}` : VIDEO_DETAIL;
     },
     videoEdit: id => {
-        // return id ? VIDEOS + `/${id}/edit` : VIDEO_EDIT;
-        return VIDEO_EDIT;
+        return id ? VIDEOS + `/${id}/edit` : VIDEO_EDIT;
     },
     videoDelete: id => {
         // return id ? VIDEOS + `/${id}/delete` : VIDEO_DELETE;
