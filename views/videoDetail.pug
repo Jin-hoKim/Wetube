@@ -4,7 +4,7 @@ include mixin/videoBlock
 block content
     h1 #{pageTitle}
     .video__player
-        video(src=`/${video.fileUrl}`)
+        video(src=`/${video.fileUrl}`, controls)
     .video__intro
         a(href=routes.videoEdit(video.id)) Edit Video
         h5.video__title=video.title
