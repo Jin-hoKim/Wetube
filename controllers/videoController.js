@@ -60,8 +60,21 @@ export const videoDetail = async (req, res) => {
     }
 }
 
-export const videoEdit = (req, res) => {
-    res.render("videoEdit.pug", {pageTitle: "Edit Video"});
+export const getVideoEdit = async (req, res) => {
+    const {
+        params: { id }
+    } = req;
+
+    try {
+        const video = await Video.findById( id );
+        res.render( "videoEdit.pug", {pageTitle: `Edit ${video.title}`, video});
+    } catch( error ) {
+        console.log(error);
+    }
+}
+
+export const postVideoEdit = (req, res) => {
+    console.log( req );
 }
 
 export const videoDelete = (req, res) => {
