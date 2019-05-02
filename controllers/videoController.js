@@ -73,8 +73,24 @@ export const getVideoEdit = async (req, res) => {
     }
 }
 
-export const postVideoEdit = (req, res) => {
-    console.log( req );
+export const postVideoEdit = async (req, res) => {
+    const {
+        params: { id },
+        body: { 
+            title, description 
+        }
+    } = req;
+
+    try {
+        // findOneAndUpdate({condition}, {update for attributes})
+        // https://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate
+        console.log(`update video title : ${title} / description : ${description}`);
+        await Video.findOneAndUpdate({_id:id}, {title, description});
+
+        res.redirect(routes.videoDetail(id));
+    } catch( error ) {
+        res.redirect(routes.home);
+    }
 }
 
 export const videoDelete = (req, res) => {
