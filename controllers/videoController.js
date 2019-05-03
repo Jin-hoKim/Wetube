@@ -52,7 +52,7 @@ export const videoDetail = async (req, res) => {
 
     try {
         const video = await Video.findById(id);
-        res.render("videoDetail.pug", {pageTitle: "Video Detail", video});
+        res.render("videoDetail.pug", {pageTitle: video.title, video});
     } catch(error) {
         console.log("--------------------------------------------");
         console.log(error);
@@ -82,7 +82,6 @@ export const postVideoEdit = async (req, res) => {
     } = req;
 
     try {
-        // findOneAndUpdate({condition}, {update for attributes})
         // https://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate
         console.log(`update video title : ${title} / description : ${description}`);
         await Video.findOneAndUpdate({_id:id}, {title, description});
@@ -93,6 +92,16 @@ export const postVideoEdit = async (req, res) => {
     }
 }
 
-export const videoDelete = (req, res) => {
-    res.render("videoDelete.pug", {pageTitle: "Delete Video"});
+export const videoDelete = async (req, res) => {
+    const {
+        params: { id }
+    } = req;
+
+    try {
+        // https://mongoosejs.com/docs/api.html#query_Query-findOneAndRemove
+        await Video.findByIdAndRemove({_id:id});
+    } catch( error ) {
+        console.log( error );
+    }
+    res.redirect( routes.home );
 }
