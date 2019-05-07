@@ -18,7 +18,7 @@ const VIDEO_DETAIL = "/:id";
 const VIDEO_EDIT = "/:id/edit";
 const VIDEO_DELETE = "/:id/delete";
 
-const routes = {
+const routes = { 
     home: HOME,
     join: JOIN,
     login: LOGIN,
@@ -26,25 +26,25 @@ const routes = {
     search: SEARCH,
     users: USERS,
     userDetail: id => {
-        return id ? USERS + `/${id}` : USER_DETAIL;
+        return id ? `${USERS}/${id}` : USER_DETAIL;
     },
     userEditProfile: id => {
-        return id ? USERS + `/${id}/edit-profile` : USER_EDIT_PROFILE;
+        return id ? `${USERS}/${id}/edit-profile` : USER_EDIT_PROFILE;
     },
     userChangePassword: id => {
-        return id ? USERS + `/${id}/change-password` : USER_CHANGE_PASSWORD;
+        return id ? `${USERS}/${id}/change-password` : USER_CHANGE_PASSWORD;
     },
 
 
     videos: VIDEOS,
     videoDetail: id => {
-        return id ? VIDEOS + `/${id}` : VIDEO_DETAIL;
+        return id ? `${VIDEOS}/${id}` : VIDEO_DETAIL;
     },
     videoEdit: id => {
-        return id ? VIDEOS + `/${id}/edit` : VIDEO_EDIT;
+        return id ? `${VIDEOS}/${id}/edit` : VIDEO_EDIT;
     },
     videoDelete: id => {
-        return id ? VIDEOS + `/${id}/delete` : VIDEO_DELETE;
+        return id ? `${VIDEOS}/${id}/delete` : VIDEO_DELETE;
     },
     videoUpload: VIDEO_UPLOAD
 };

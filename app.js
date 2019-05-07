@@ -1,18 +1,17 @@
-import pug from 'pug';
-
-import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import helmet from 'helmet';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import pug from 'pug';
 
-import routes from "./routes";
+import { localMiddleware } from './middlewares';
 import globalRouter from './routers/globalRouter';
+import routes from "./routes";
 import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
-import { localMiddleware } from './middlewares';
 
-var app = express();
+const app = express();
 
 // middleware
 app.use(helmet());

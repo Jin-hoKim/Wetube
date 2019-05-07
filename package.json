@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "Cloning Youtube with VanillaJS and NodeJS",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jin-hoKim/Wetube.git"
-  },
+  "repository": "git+https://github.com/Jin-hoKim/Wetube.git",
   "author": "JHKim",
   "dependencies": {
     "@babel/core": "^7.4.3",
@@ -15,6 +12,7 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
     "dotenv": "^7.0.0",
+    "eslint-config-prettier": "^4.2.0",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
     "mongoose": "^5.5.3",
@@ -26,6 +24,10 @@
     "start": "nodemon --exec babel-node init.js --delay 2"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
     "nodemon": "^1.18.11"
-  }
+  },
+  "license": "MIT"
 }

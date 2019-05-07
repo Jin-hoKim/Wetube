@@ -5,7 +5,8 @@ export const home = async (req, res) => {
     // res.send("Home");
     // const videos = await Video.find({}); >> no good
     try {
-        const videos = await Video.find({});
+        // order by id desc
+        const videos = await Video.find({}).sort({_id: -1});
         console.log( videos );
         res.render("home.pug", {pageTitle:"HOME", videos});
     } catch( error ) {
