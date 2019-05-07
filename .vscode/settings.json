@@ -1,0 +1,8 @@
+{
+    "editor.minimap.maxColumn": 60,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.tree.indent": 20,
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "eslint.alwaysShowStatus": true
+}
