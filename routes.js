@@ -18,7 +18,7 @@ const VIDEO_DETAIL = "/:id";
 const VIDEO_EDIT = "/:id/edit";
 const VIDEO_DELETE = "/:id/delete";
 
-const routes = { 
+const routes = {
     home: HOME,
     join: JOIN,
     login: LOGIN,
