@@ -24,12 +24,24 @@ export const home = async (req, res) => {
 	const test = {};
 };
 
-export const search = (req, res) => {
+export const search = async (req, res) => {
 	// const searchingBy = req.query[ "term" ]; // old version
 	// ES6 NEW Version
 	const {
 		query: { term: searchingBy }
 	} = req;
+
+	let videos = [];
+
+	try {
+		// mongoose find regex 사용
+		// option - i : insenstive
+		videos = await Video.find({
+			title: { $regex: searchingBy, $options: "i" }
+		});
+	} catch (error) {
+		console.log(error);
+	}
 
 	// 전달하려는 변수명이 동일한 경우 한번만 작성해도 인식한다.
 	// searchingBy: searchingBy ==> searchingBy
