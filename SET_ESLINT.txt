@@ -1,0 +1,23 @@
+1. INSTALL ESLINT
+    : ESLINT >> npm install eslint
+    : PLUGIN IMPORT >> npm install eslint-plugin-import
+    : PLUGIN PRETTIER >> npm install eslint-plugin-prettier
+    : CONFIG AIRBINB BASE >> npm install eslint-config-airbnb-base
+    : CONFIG PRETTIER >> npm install eslint-config-prettier
+    : PRETTIER >> npm install prettier
+
+2. INIT ESLINT
+    : eslint --init
+    : auto created file ".eslintrc.js"
+
+3. EDIT FILES
+    : package.json
+        >> ESLINT, PRETTIER MOVE TO "devDependencies"
+        
+    : .eslintrc.js
+        >> 
+        env: {
+            ...
+            node: true
+        },
+        extends: ["airbnb-base", "prettier"]
