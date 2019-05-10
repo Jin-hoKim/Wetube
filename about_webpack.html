@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Webpack</title>
+    <style>
+        h1,
+        h5 {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            font-size: 13px;
+            font-weight: 600;
+            color: black;
+        }
+
+        .descript {
+            display: flex;
+            flex-flow: column;
+            justify-content: flex-start;
+            padding-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>bundle your everythings..</h1>
+    <a href="https://webpack.js.org/">link Webpack</a>
+    <p />
+    <h5>1. Install Webpack</h5>
+    <div class="descript">
+        <small>Install : <b>npm install webpack webpack-cli</b></small>
+    </div>
+    <p />
+    <h5>2. Edit file "package.json"</h5>
+    <pre>
+    "scripts": {
+        "start" : "nodemon --exec ...."
+
+                [ EDIT TO ]           
+
+        "dev:server" : "nodemon --exec ...",
+        "dev:assets" : "webpack"
+    }
+    </pre>
+
+    <h5>3. Create Files</h5>
+    <div class="descript">
+        <small>3-1. Create folder <b>"assets"</b> in root</small>
+        <small>3-2. Create JS file : <b>assets/js/main.js</b></small>
+        <small>3-3. Create SCSS file : <b>assets/scss/styles.scss</b></small>
+    </div>
+    <p />
+
+    <h5>4. Webpack Setting</h5>
+    <div class="descript">
+        <small>4-1. Create Config file <b>"webpack.config.js</b> in root</small>
+        <small>4-2. Set config file :</small>
+        <br />
+        <pre>
+        const path = require("path");
+
+        const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
+        const OUTPUT_DIR = path.join(__dirname, "static");
+        
+        const config = {
+            entry: ENTRY_FILE,
+            output: {
+                path: OUTPUT_DIR,
+                filename: "[name].[format]"
+            }
+        };
+        
+        module.exports = config;
+        </pre>
+    </div>
+    <p />
+
+    <h5>5. Run</h5>
+    <div class="descript">
+        <small>Run Webpack : <b>npm run dev:assets</b></small>
+    </div>
+    <p />
+</body>
+
+</html>
