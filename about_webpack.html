@@ -32,20 +32,19 @@
     <h1>bundle your everythings..</h1>
     <a href="https://webpack.js.org/">link Webpack</a>
     <p />
-    <h5>1. Install Webpack</h5>
+    <h5>1. Install</h5>
     <div class="descript">
-        <small>Install : <b>npm install webpack webpack-cli</b></small>
+        <small>1-1. Install Webpack : <b>npm install webpack webpack-cli</b></small>
+        <small>1-2. Install Loaders : <b>npm install sass-loader postcss-loader css-loader</b></small>
+        <small>1-3. Install : <b>npm install node-sass</b></small>
+        <small>1-4. Install Plugin - Autoprefixer : <b>npm install autoprefixer</b></small>
     </div>
     <p />
     <h5>2. Edit file "package.json"</h5>
     <pre>
     "scripts": {
-        "start" : "nodemon --exec ...."
-
-                [ EDIT TO ]           
-
-        "dev:server" : "nodemon --exec ...",
-        "dev:assets" : "webpack"
+        "dev:assets": "webpack --mode development",
+        "build:assets": "webpack --mode production"
     }
     </pre>
 
@@ -61,22 +60,49 @@
     <div class="descript">
         <small>4-1. Create Config file <b>"webpack.config.js</b> in root</small>
         <small>4-2. Set config file :</small>
-        <br />
         <pre>
-        const path = require("path");
-
-        const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
-        const OUTPUT_DIR = path.join(__dirname, "static");
-        
-        const config = {
-            entry: ENTRY_FILE,
-            output: {
-                path: OUTPUT_DIR,
-                filename: "[name].[format]"
-            }
-        };
-        
-        module.exports = config;
+    const path = require("path");
+    const autoprefixer = require("autoprefixer");
+    const ExtractCSS = require("extract-text-webpack-plugin");
+    
+    const MODE = process.env.WEBPACK_ENV;
+    const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
+    const OUTPUT_DIR = path.join(__dirname, "static");
+    
+    const config = {
+        entry: ENTRY_FILE,
+        mode: MODE,
+        module: {
+            rules: [
+                {
+                    test: /\.(scss)$/,
+                    use: ExtractCSS.extract([
+                        {
+                            loader: "css-loader"
+                        },
+                        {
+                            loader: "postcss-loader",
+                            options: {
+                                plugin() {
+                                    return [autoprefixer({ browsers: "cover 99.5%" })];
+                                }
+                            }
+                        },
+                        {
+                            loader: "sass-loader"
+                        }
+                    ])
+                }
+            ]
+        },
+        output: {
+            path: OUTPUT_DIR,
+            filename: "[name].js"
+        },
+        plugins: [new ExtractCSS("styles.css")]
+    };
+    
+    module.exports = config;
         </pre>
     </div>
     <p />
@@ -86,6 +112,44 @@
         <small>Run Webpack : <b>npm run dev:assets</b></small>
     </div>
     <p />
+
+    <h5>6. Rules</h5>
+    <div class="descript">
+        <small>Rules - CSS</small>
+        <pre>
+        module: {
+            rules: [
+                {
+                    test: /\.(scss)$/,           ------------ find scss file 
+                    use: ExtractCSS.extract([    ------------ when find scss file, use loader plugin and convert from sass to css. (bottom to top)
+                        {
+                            loader: "css-loader"
+                        },
+                        {
+                            loader: "postcss-loader",
+                            options: {
+                                plugin() {
+                                    return [autoprefixer({ browsers: "cover 99.5%" })];
+                                }
+                            }
+                        },
+                        {
+                            loader: "sass-loader"
+                        }
+                    ])
+                }
+            ]
+        },
+        </pre>
+    </div>
+
+    <h5>※ Links</h5>
+    <div class="descript">
+        <a href="https://github.com/webpack-contrib/sass-loader">sass-loader</a>
+        <a href="https://postcss.org/">postcss-loader</a>
+        <a href="https://github.com/postcss/autoprefixer">autoprefixer</a>
+        <a href="https://github.com/browserslist/browserslist">autoprefixer option - browserslist</a>
+    </div>
 </body>
 
 </html>

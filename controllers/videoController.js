@@ -21,7 +21,6 @@ export const home = async (req, res) => {
 			videos: []
 		});
 	}
-	const test = {};
 };
 
 export const search = async (req, res) => {
