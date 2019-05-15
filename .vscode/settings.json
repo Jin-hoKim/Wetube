@@ -4,5 +4,8 @@
     "workbench.tree.indent": 20,
     "workbench.view.alwaysShowHeaderActions": true,
     "workbench.editor.highlightModifiedTabs": true,
-    "eslint.alwaysShowStatus": true
+    "eslint.alwaysShowStatus": true,
+    "scss.lint.important": "error",
+    "less.lint.important": "error",
+    "css.lint.important": "error"
 }
