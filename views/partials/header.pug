@@ -14,19 +14,23 @@ header.header
             ul
                 if !user.isAuthenticated
                     li
-                        a(href=routes.join) Join
+                        a(href=routes.join)
+                            i.fas.fa-user-plus 
+                            span Join
                     li
-                        a(href=routes.login) Log In
+                        a(href=routes.login)
+                            i.fas.fa-sign-in-alt
+                            span Log In
                 else
                     li
-                        i.fas.fa-upload 
                         a(href=`/videos${routes.videoUpload}`) 
+                            i.fas.fa-upload     
                             span Upload
                     li
-                        i.fas.fa-user
                         a(href=routes.userDetail(user.id)) 
+                            i.fas.fa-user
                             span Profile
                     li 
-                        i.fas.fa-sign-out-alt
                         a(href=routes.logout)
-                         span Log Out
+                            i.fas.fa-sign-out-alt
+                            span Log Out

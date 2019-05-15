@@ -26,7 +26,7 @@ export const postJoin = (req, res) => {
         body: {name, email, password, password2}
     } = req;
 
-    if( password != password2 ) {
+    if( password !== password2 ) {
         res.status(400);
         res.render("errorJoin.pug", {pageTitle: "Join", errorMsg:"비밀번호가 일치하지 않습니다!"});
     } else {

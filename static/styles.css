@@ -238,7 +238,6 @@ main {
             position: relative;
             font-size: 15px;
             font-weight: bolder;
-            top: 5px;
             left: -10px; }
       .header .header__wrapper .header__column form {
         width: 100%; }
