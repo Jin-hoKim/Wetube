@@ -5,10 +5,12 @@ block content
         form(action=routes.login, method="post")
             input(type="email", name="email", placeholder="Email", required="true")
             input(type="password", name="password", placeholder="Password", required="true")
-            button(type="submit")
-                i.fas.fa-sign-in-alt 
-                span Login
-            //- input(type="submit", value="Log In")
-            .form-divider
+            .form-container__buttons
+                button.button-login(type="submit")
+                    i.fas.fa-sign-in-alt 
+                    span Login
+                button.button-join(type="button")
+                    i.fas.fa-user-plus
+                    span Join    
         include partials/socialLogin
         

@@ -22,12 +22,23 @@
     }
 }
 
-.social-login--github {
-    background-color: $black;
-    color: white;
-}
+.social-login {
+    .divider {
+        width: 100%;
+        height: 2px;
 
-.social-login--facebook {
-    background-color: #3a5998;
-    color: white;
+        margin-bottom: 15px;
+
+        background-color: $divider;
+    }
+
+    .social-login--github {
+        background-color: $black;
+        color: white;
+    }
+
+    .social-login--facebook {
+        background-color: #3a5998;
+        color: white;
+    }
 }
