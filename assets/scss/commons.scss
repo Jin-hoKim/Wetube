@@ -2,9 +2,10 @@
     border: 1px solid black;
 }
 
-@mixin placeholder($fontSize:14px, $color:rgba(0, 0, 0, 0.5), $textAlign:left) {
+@mixin placeholder($fontSize:14px, $fontWeight:600, $color:rgba(0, 0, 0, 0.5), $textAlign:left) {
     &::placeholder {
         font-size: $fontSize;
+        font-weight: $fontWeight;
         color: $color;
         text-align: $textAlign;
     }

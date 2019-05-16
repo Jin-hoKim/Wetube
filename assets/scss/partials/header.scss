@@ -73,7 +73,7 @@
                     color: $black;
                     font-weight: 600;
 
-                    @include placeholder(14px, rgba(0, 0, 0, 0.7));
+                    @include placeholder(14px, 600, rgba(0, 0, 0, 0.7));
 
                 }
             }

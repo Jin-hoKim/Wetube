@@ -15,20 +15,30 @@ main {
     max-width: 1400px;
     margin: 0;
     min-height: 70vh;
+
+    h1 {
+        margin-bottom: 15px;
+
+        display: flex;
+        justify-content: center;
+
+        font-size: 40px;
+        font-weight: 600;
+
+        text-transform: uppercase;
+
+        color: $black;
+    }
 }
 
 button,
 input {
-    @include placeholder();
+    @include placeholder(13px, 300);
 
     width: 100%;
     padding: 10px 10px;
 
     border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
 
     font-size: 14px;
     font-weight: 600;
