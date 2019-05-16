@@ -1,3 +1,11 @@
 .border {
     border: 1px solid black;
 }
+
+@mixin placeholder($fontSize:14px, $color:rgba(0, 0, 0, 0.5), $textAlign:left) {
+    &::placeholder {
+        font-size: $fontSize;
+        color: $color;
+        text-align: $textAlign;
+    }
+}
