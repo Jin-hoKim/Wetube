@@ -141,6 +141,9 @@ input {
   input:focus, input:active {
     outline: none; }
 
+button {
+  cursor: pointer; }
+
 .border {
   border: 1px solid black; }
 
@@ -180,6 +183,21 @@ button,
 input {
   width: 100%;
   padding: 10px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
@@ -222,6 +240,12 @@ input {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.5);
     text-align: left; }
+  button i,
+  input i {
+    font-size: 20px; }
+  button span,
+  input span {
+    margin-left: 10px; }
 
 .header {
   display: -webkit-box;
@@ -407,15 +431,15 @@ footer {
     margin-bottom: 15px; }
     .form-container form input {
       width: 100%;
+      margin-bottom: 15px;
       display: block;
       -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
          -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
               box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
-      .form-container form input:not(:last-child) {
-        margin-bottom: 15px; }
-    .form-container form input[type="submit"] {
+    .form-container form button[type="submit"] {
       background-color: #3498db;
-      color: white; }
+      color: white;
+      margin-bottom: 15px; }
     .form-container form .form-divider {
       width: 100%;
       height: 2px;

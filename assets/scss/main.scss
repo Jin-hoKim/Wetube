@@ -38,9 +38,21 @@ input {
     width: 100%;
     padding: 10px 10px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     border-radius: 5px;
 
     font-size: 14px;
     font-weight: 600;
     color: $black;
+
+    i {
+        font-size: 20px;
+    }
+
+    span {
+        margin-left: 10px;
+    }
 }
