@@ -514,6 +514,9 @@ footer {
   background-color: #3a5998;
   color: white; }
 
+.videos {
+  display: grid; }
+
 .video-detail__container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -536,6 +539,6 @@ footer {
     width: 100%;
     max-width: 850px;
     margin-top: 15px; }
-
-.videos {
-  display: grid; }
+    .video-detail__container .video__info button {
+      width: 100px;
+      margin-bottom: 25px; }
