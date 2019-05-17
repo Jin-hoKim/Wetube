@@ -2,7 +2,7 @@ header.header
     .header__wrapper
         .header__column
             a(href=routes.home)
-                i.fab.fa-youtube
+                i.fab.fa-youtube(title="Wetube")
         .header__column
             form(action=routes.search, method="get")
                 input(
@@ -15,22 +15,22 @@ header.header
                 if !user.isAuthenticated
                     li
                         a(href=routes.join)
-                            i.fas.fa-user-plus 
+                            i.fas.fa-user-plus(title="Join")
                             span Join
                     li
                         a(href=routes.login)
-                            i.fas.fa-sign-in-alt
+                            i.fas.fa-sign-in-alt(title="Login")
                             span Log In
                 else
                     li
                         a(href=`/videos${routes.videoUpload}`) 
-                            i.fas.fa-upload     
+                            i.fas.fa-upload(title="Video Upload")     
                             span Upload
                     li
                         a(href=routes.userDetail(user.id)) 
-                            i.fas.fa-user
+                            i.fas.fa-user(title="User Profile")
                             span Profile
                     li 
                         a(href=routes.logout)
-                            i.fas.fa-sign-out-alt
+                            i.fas.fa-sign-out-alt(title="Logout")
                             span Log Out

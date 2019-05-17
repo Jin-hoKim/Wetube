@@ -513,3 +513,6 @@ footer {
 .social-login .social-login--facebook {
   background-color: #3a5998;
   color: white; }
+
+.videos {
+  display: grid; }
