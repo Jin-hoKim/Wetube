@@ -3,15 +3,19 @@ include mixin/videoBlock
 
 block content
     h1 #{pageTitle}
-    .video__player
-        video(src=`/${video.fileUrl}`, controls)
-    .video__intro
-        a(href=routes.videoEdit(video.id)) Edit Video
+    .video-detail__container
+        video(src=`/${video.fileUrl}`)
+    .video__info
+        a(href=routes.videoEdit(video.id))
+            button Edit Video
         h5.video__title=video.title
-        span.video__views=video.views
         p.video__description=video.description
+        if video.views === 1 
+            span.video__vieews 1 view
+        else
+            span.video__views #{video.views} views
     .video__comments
         if video.comments.length === 1
             span.video__comment-number 1 comment
-        else 
+        else
             span.video__comment-number #{video.comments.length} comments

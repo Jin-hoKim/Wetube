@@ -9,7 +9,7 @@ export const localMiddleware = (req, res, next) => {
 	res.locals.routes = routes;
 
 	res.locals.user = {
-		isAuthenticated: false,
+		isAuthenticated: true, 
 		id: 1
 	};
 
