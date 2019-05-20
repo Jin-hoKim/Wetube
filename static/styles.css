@@ -160,7 +160,7 @@ body {
 main {
   width: 100%;
   max-width: 1200px;
-  margin: 0;
+  margin: 0 auto;
   min-height: 70vh; }
   main h1 {
     margin-bottom: 15px;
@@ -180,8 +180,12 @@ main {
     color: #444444; }
 
 button,
-input {
+input:not([type="file"]),
+textarea,
+.fileUpload {
   width: 100%;
+  max-width: 320px;
+  resize: none;
   padding: 10px 10px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -198,54 +202,90 @@ input {
      -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border: none;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
+  background-color: white;
   font-size: 14px;
   font-weight: 600;
   color: #444444; }
   button::-webkit-input-placeholder,
-  input::-webkit-input-placeholder {
+  input:not([type="file"])::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder,
+  .fileUpload::-webkit-input-placeholder {
     font-size: 13px;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.5);
     text-align: left; }
   button:-moz-placeholder,
-  input:-moz-placeholder {
+  input:not([type="file"]):-moz-placeholder,
+  textarea:-moz-placeholder,
+  .fileUpload:-moz-placeholder {
     font-size: 13px;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.5);
     text-align: left; }
   button::-moz-placeholder,
-  input::-moz-placeholder {
+  input:not([type="file"])::-moz-placeholder,
+  textarea::-moz-placeholder,
+  .fileUpload::-moz-placeholder {
     font-size: 13px;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.5);
     text-align: left; }
   button:-ms-input-placeholder,
-  input:-ms-input-placeholder {
+  input:not([type="file"]):-ms-input-placeholder,
+  textarea:-ms-input-placeholder,
+  .fileUpload:-ms-input-placeholder {
     font-size: 13px;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.5);
     text-align: left; }
   button::-ms-input-placeholder,
-  input::-ms-input-placeholder {
+  input:not([type="file"])::-ms-input-placeholder,
+  textarea::-ms-input-placeholder,
+  .fileUpload::-ms-input-placeholder {
     font-size: 13px;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.5);
     text-align: left; }
   button::placeholder,
-  input::placeholder {
+  input:not([type="file"])::placeholder,
+  textarea::placeholder,
+  .fileUpload::placeholder {
     font-size: 13px;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.5);
     text-align: left; }
   button i,
-  input i {
-    font-size: 20px; }
+  input:not([type="file"]) i,
+  textarea i,
+  .fileUpload i {
+    font-size: 15px; }
   button span,
-  input span {
-    margin-left: 10px; }
+  input:not([type="file"]) span,
+  textarea span,
+  .fileUpload span {
+    margin-left: 5px; }
+
+button {
+  border: none;
+  color: white;
+  cursor: pointer; }
+
+button.button-login,
+button.button-upload {
+  background-color: #3498db; }
+
+button.button-join,
+button.button-edit,
+button.button-changePassword {
+  background-color: #2ecc71; }
+
+button.button-cancel,
+button.button-delete {
+  background-color: #e74c3c; }
 
 .header {
   display: -webkit-box;
@@ -332,6 +372,7 @@ input {
         .header .header__wrapper .header__column form input {
           padding: 8px 10px;
           width: 100%;
+          max-width: none;
           -webkit-border-radius: 5px;
              -moz-border-radius: 5px;
                   border-radius: 5px;
@@ -429,13 +470,60 @@ footer {
     width: 100%;
     max-width: 320px;
     margin-bottom: 15px; }
-    .form-container form input {
+    .form-container form input:not([type="file"]),
+    .form-container form .fileUpload {
       width: 100%;
       margin-bottom: 15px;
+      padding-top: 10px;
       display: block;
-      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-         -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+      -webkit-border-radius: 5px;
+         -moz-border-radius: 5px;
+              border-radius: 5px; }
+    .form-container form textarea {
+      width: 100%;
+      min-height: 150px;
+      margin-bottom: 15px;
+      border: none;
+      resize: none;
+      -webkit-border-radius: 5px;
+         -moz-border-radius: 5px;
+              border-radius: 5px; }
+      .form-container form textarea::-webkit-input-placeholder {
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        text-align: left; }
+      .form-container form textarea:-moz-placeholder {
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        text-align: left; }
+      .form-container form textarea::-moz-placeholder {
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        text-align: left; }
+      .form-container form textarea:-ms-input-placeholder {
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        text-align: left; }
+      .form-container form textarea::-ms-input-placeholder {
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        text-align: left; }
+      .form-container form textarea::placeholder {
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        text-align: left; }
+    .form-container form a {
+      width: 100%;
+      max-width: 320px; }
+    .form-container form .fileUpload label {
+      margin-right: 10px;
+      font-weight: 300; }
     .form-container form .form-container__buttons {
       width: 100%;
       display: -webkit-box;
@@ -452,15 +540,6 @@ footer {
               flex-direction: row; }
       .form-container form .form-container__buttons button:first-child {
         margin-right: 10px; }
-      .form-container form .form-container__buttons .button-login {
-        background-color: #3498db;
-        color: white; }
-      .form-container form .form-container__buttons .button-join {
-        background-color: #2ecc71;
-        color: white; }
-      .form-container form .form-container__buttons .button-cancel {
-        background-color: #e74c3c;
-        color: white; }
 
 .social-login {
   display: -webkit-box;
@@ -514,8 +593,26 @@ footer {
   background-color: #3a5998;
   color: white; }
 
-.videos {
-  display: grid; }
+.videoBlock video {
+  margin-bottom: 10px;
+  max-width: 100%; }
+
+.videoBlock .videoBlock__title {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 10px; }
+
+.home-videos {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
+  grid-gap: 30px; }
+  .home-videos .videoBlock:first-child,
+  .home-videos .videoBlock:nth-child(2) {
+    grid-column: span 3; }
+  .home-videos .videoBlock:nth-child(3),
+  .home-videos .videoBlock:nth-child(4),
+  .home-videos .videoBlock:nth-child(5) {
+    grid-column: span 2; }
 
 .video-detail__container {
   display: -webkit-box;
@@ -540,5 +637,24 @@ footer {
     max-width: 850px;
     margin-top: 15px; }
     .video-detail__container .video__info button {
-      width: 100px;
+      width: -webkit-fit-content;
+      width: -moz-fit-content;
+      width: fit-content;
       margin-bottom: 25px; }
+    .video-detail__container .video__info .video__title,
+    .video-detail__container .video__info .video__description,
+    .video-detail__container .video__info .video__views {
+      font-size: 20px;
+      display: block;
+      margin-top: 15px; }
+    .video-detail__container .video__info .view__title {
+      font-size: 22px;
+      font-weight: 300; }
+    .video-detail__container .video__info .video__description {
+      font-size: 16px; }
+    .video-detail__container .video__info .video__views {
+      font-size: 14px; }
+    .video-detail__container .video__info .video__comments {
+      margin-top: 25px; }
+      .video-detail__container .video__info .video__comments .view__comment-number {
+        font-size: 18px; }

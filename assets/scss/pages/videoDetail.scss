@@ -9,10 +9,38 @@
         margin-top: 15px;
 
         button {
-            width: 100px;
+            width: fit-content;
             margin-bottom: 25px;
         }
 
+        .video__title,
+        .video__description,
+        .video__views {
+            font-size: 20px;
+            display: block;
+            margin-top: 15px;
+        }
 
+        .view__title {
+            font-size: 22px;
+            font-weight: 300;
+        }
+
+        .video__description {
+            font-size: 16px;
+        }
+
+        .video__views {
+            font-size: 14px;
+        }
+
+
+        .video__comments {
+            margin-top: 25px;
+
+            .view__comment-number {
+                font-size: 18px;
+            }
+        }
     }
 }

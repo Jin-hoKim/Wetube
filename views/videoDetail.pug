@@ -5,18 +5,19 @@ block content
     h1 #{pageTitle}
     .video-detail__container
         video(src=`/${video.fileUrl}`)
-    .video__info
-        a(href=routes.videoEdit(video.id))
-            button Edit Video
-        h5.video__title=video.title
-        p.video__description=video.description
-        if video.views === 1 
-            span.video__vieews 1 view
-        else
-            span.video__views #{video.views} views
-    .video__comments
-        if video.comments.length === 1
-            span.video__comment-number 1 comment
-        else
-            span.video__comment-number #{video.comments.length} comments
-    
+        .video__info
+            a(href=routes.videoEdit(video.id))
+                button.button-edit 
+                    i.fas.fa-edit
+                    span Edit Video
+            h5.video__title=video.title
+            p.video__description=video.description
+            if video.views === 1 
+                span.video__views 1 view
+            else
+                span.video__views #{video.views} views
+        .video__comments
+            if video.comments.length === 1
+                span.video__comment-number 1 comment
+            else
+                span.video__comment-number #{video.comments.length} comments

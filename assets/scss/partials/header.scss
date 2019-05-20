@@ -69,12 +69,11 @@
                 input {
                     padding: 8px 10px;
                     width: 100%;
+                    max-width: none;
                     border-radius: 5px;
                     color: $black;
                     font-weight: 600;
-
                     @include placeholder(14px, 600, rgba(0, 0, 0, 0.7));
-
                 }
             }
         }

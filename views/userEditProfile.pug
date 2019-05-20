@@ -2,10 +2,12 @@ extends layouts/main
 block content
     h1 #{pageTitle}
     .form-container
-        form(action=routes.userEditProfiel, method="post")
+        form(action=routes.userEditProfile, method="post")
             label(for="avatar") Avatar
             input(type="file", id="avatar", name="avatar")
             input(type="text", name="name", placeholder="Full Name")
             input(type="email", name="email", placeholder="Email")
             input(type="submit", value="Update Profile")
-        a.form-container__link(href=`/users${routes.userChangePassword}`) Change Password
+        a.form-container__link(href=`/users${routes.userChangePassword}`)
+            button.button-changePassword 
+                span Change Password

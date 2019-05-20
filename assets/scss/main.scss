@@ -13,7 +13,7 @@ body {
 main {
     width: 100%;
     max-width: 1200px;
-    margin: 0;
+    margin: 0 auto;
     min-height: 70vh;
 
     h1 {
@@ -32,27 +32,58 @@ main {
 }
 
 button,
-input {
+input:not([type="file"]),
+textarea,
+.fileUpload {
     @include placeholder(13px, 300);
 
     width: 100%;
+    max-width: 320px;
+    resize: none;
+
     padding: 10px 10px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    border: none;
     border-radius: 5px;
+
+    background-color: white;
 
     font-size: 14px;
     font-weight: 600;
     color: $black;
 
     i {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     span {
-        margin-left: 10px;
+        margin-left: 5px;
     }
+}
+
+button {
+    border: none;
+    color: white;
+
+    cursor: pointer;
+}
+
+button.button-login,
+button.button-upload {
+    background-color: #3498db;
+}
+
+button.button-join,
+button.button-edit,
+button.button-changePassword {
+    background-color: #2ecc71;
+}
+
+button.button-cancel,
+button.button-delete {
+    background-color: #e74c3c;
 }
