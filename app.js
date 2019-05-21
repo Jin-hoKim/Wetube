@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import express from "express";
 import helmet from "helmet";
+// import passport from "passport";
 import morgan from "morgan";
 import pug from "pug";
 
@@ -28,6 +29,8 @@ app.use("/static", express.static("static"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 app.use(morgan("dev"));
 
 app.use(localMiddleware);
