@@ -2,8 +2,10 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import express from "express";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import helmet from "helmet";
 import passport from "passport";
+import mongoose from "mongoose";
 import morgan from "morgan";
 import pug from "pug";
 
@@ -16,6 +18,8 @@ import videoRouter from "./routers/videoRouter";
 import "./passport";
 
 const app = express();
+
+const CokieStore = MongoStore(session);
 
 // middleware
 app.use(helmet());
@@ -37,7 +41,8 @@ app.use(
 	session({
 		secret: process.env.COOKIE_SECRET,
 		resave: true,
-		saveUninitialized: false
+		saveUninitialized: false,
+		store: new CokieStore({ mongooseConnection: mongoose.connection })
 	})
 );
 app.use(passport.initialize());
