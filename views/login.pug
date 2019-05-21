@@ -9,8 +9,9 @@ block content
                 button.button-login(type="submit")
                     i.fas.fa-sign-in-alt 
                     span Login
-                button.button-join(type="button")
-                    i.fas.fa-user-plus
-                    span Join    
+                a(href=routes.join)    
+                    button.button-join(type="button")
+                        i.fas.fa-user-plus
+                        span Join    
         include partials/socialLogin
         

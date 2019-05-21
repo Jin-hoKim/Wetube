@@ -11,8 +11,9 @@ block content
                 button.button-login(type="submit")
                     i.fas.fa-user-plus
                     span Join
-                button.button-cancel(type="button")
-                    i.far.fa-times-circle
-                    span Cancel
+                a(href=routes.home)    
+                    button.button-cancel(type="button")
+                        i.far.fa-times-circle
+                        span Cancel
         include partials/socialLogin
         
