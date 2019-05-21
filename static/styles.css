@@ -410,7 +410,6 @@ button.button-delete {
             text-align: left; }
 
 footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
   margin: 20px 0;
