@@ -13,10 +13,10 @@ export const localMiddleware = (req, res, next) => {
 	// 	id: 1
 	// };
 
-	res.locals.user = req.user || null;
+	// res.locals.user = req.user || null;
+	// console.log(req.user);
 
-	console.log(req.user);
-
+	res.locals.loggedUser = req.user || null;
 	next();
 };
 

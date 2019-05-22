@@ -10,6 +10,7 @@ const USERS = "/users";
 const USER_DETAIL = "/:id";
 const USER_EDIT_PROFILE = "/:id/edit-profile";
 const USER_CHANGE_PASSWORD = "/:id/change-password";
+const USER_ME = "/me";
 
 // VIDEO
 const VIDEOS = "/videos";
@@ -33,6 +34,7 @@ const routes = {
 	logout: LOGOUT,
 	search: SEARCH,
 	users: USERS,
+	me: USER_ME,
 	userDetail: id => {
 		return id ? `${USERS}/${id}` : USER_DETAIL;
 	},

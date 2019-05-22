@@ -12,7 +12,8 @@ import {
 	githubLoginCallback,
 	postGithubLogin,
 	facebookLogin,
-	postFacebookLogin
+	postFacebookLogin,
+	getUserMe
 } from "../controllers/userController";
 import { onlyPublic, onlyPrivate } from "../middlewares";
 
@@ -41,5 +42,7 @@ globalRouter.get(
 	passport.authenticate("facebook", { failureRedirect: routes.login }),
 	postFacebookLogin
 );
+
+globalRouter.get(routes.me, getUserMe);
 
 export default globalRouter;

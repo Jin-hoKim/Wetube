@@ -12,7 +12,7 @@ header.header
                 )
         .header__column 
             ul
-                if !user
+                if !loggedUser
                     li
                         a(href=routes.join)
                             i.fas.fa-user-plus(title="Join")
@@ -27,7 +27,7 @@ header.header
                             i.fas.fa-upload(title="Video Upload")     
                             span Upload
                     li
-                        a(href=routes.userDetail(user.id)) 
+                        a(href=routes.me)
                             i.fas.fa-user(title="User Profile")
                             span Profile
                     li 
