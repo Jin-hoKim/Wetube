@@ -553,7 +553,7 @@ footer {
      -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column; }
-  .social-login button {
+  .social-login a button {
     width: 100%;
     min-width: 320px;
     display: -webkit-box;
@@ -571,12 +571,12 @@ footer {
        -moz-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-    .social-login button:not(:last-child) {
-      margin-bottom: 15px; }
-  .social-login span {
+  .social-login a span {
     margin-right: 10px;
     font-size: 20px;
     font-weight: normal; }
+  .social-login a:not(:last-child) {
+    margin-bottom: 15px; }
 
 .social-login .divider {
   width: 100%;

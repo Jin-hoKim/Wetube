@@ -1,5 +1,8 @@
 import passport from "passport";
+import GithubStrategy from "passport-github";
 import User from "./models/User";
+import { githubLoginCallback } from "./controllers/userController";
+import routes from "./routes";
 
 // strategy : 로그인하는 방식, 인증하는 방식
 // 아래의 내용은 passport-local-mongoose에서 제공하는 인증방식을 사용한다
@@ -11,3 +14,15 @@ passport.serializeUser(User.serializeUser());
 
 // deserialize : 쿠키에 저장된 값을 어떻게 찾는가를 설정
 passport.deserializeUser(User.deserializeUser());
+
+// Github 인증서 사용설정
+passport.use(
+	new GithubStrategy(
+		{
+			clientID: process.env.GITHUB_ID,
+			clientSecret: process.env.GITHUB_SECRET,
+			callbackURL: `http://localhost:4000${routes.githubCallback}`
+		},
+		githubLoginCallback
+	)
+);
