@@ -1,7 +1,11 @@
 import passport from "passport";
 import GithubStrategy from "passport-github";
+import FacebookStrategy from "passport-facebook";
 import User from "./models/User";
-import { githubLoginCallback } from "./controllers/userController";
+import {
+	githubLoginCallback,
+	facebookLoginCallback
+} from "./controllers/userController";
 import routes from "./routes";
 
 // strategy : 로그인하는 방식, 인증하는 방식
@@ -26,3 +30,15 @@ passport.use(
 		githubLoginCallback
 	)
 );
+
+// FACEBOOK 인증서 사용설정
+// passport.use(
+// 	new FacebookStrategy(
+// 		{
+// 			clientID: process.env.FACEBOOK_ID,
+// 			clientSecret: process.env.FACEBOOK_SECRET,
+// 			callbackURL: `http://localhost:4000${routes.facebookCallback}`
+// 		},
+// 		facebookLoginCallback
+// 	)
+// );

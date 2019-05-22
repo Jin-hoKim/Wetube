@@ -95,17 +95,21 @@ export const githubLoginCallback = async (
 };
 
 export const postGithubLogin = async (req, res) => {
-	const { _json: id, avatar_url, name, email } = req;
+	res.redirect(routes.home);
+};
 
-	const userGithub = await User({
-		name,
-		email,
-		avatar_url,
-		githubId: id
-	});
+export const facebookLogin = passport.authenticate("facebook");
 
-	console.log(userGithub);
+export const facebookLoginCallback = (
+	accessToken,
+	refreshToken,
+	profile,
+	cb
+) => {
+	console.log(profile);
+};
 
+export const postFacebookLogin = (req, res) => {
 	res.redirect(routes.home);
 };
 
