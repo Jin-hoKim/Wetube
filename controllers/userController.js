@@ -6,8 +6,16 @@ export const users = (req, res) => {
 	res.render("userDetail.pug", { pageTitle: "User Home" });
 };
 
-export const userDetail = (req, res) => {
-	res.render("userDetail.pug", { pageTitle: "User Detail" });
+export const userDetail = async (req, res) => {
+	const {
+		params: { id }
+	} = req;
+	try {
+		const user = await User.findById(id);
+		res.render("userDetail.pug", { pageTitle: "User Detail", user });
+	} catch (error) {
+		res.redirect(routes.home);
+	}
 };
 
 export const userEditProfile = (req, res) => {
@@ -111,8 +119,6 @@ export const facebookLoginCallback = async (
 	const {
 		_json: { id, email, first_name: firstName, last_name: lastName, picture }
 	} = profile;
-
-	console.log(profile._json);
 
 	try {
 		const user = await User.findOne({ email });
