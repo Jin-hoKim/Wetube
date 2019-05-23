@@ -1,10 +1,12 @@
 import passport from "passport";
 import GithubStrategy from "passport-github";
 import FacebookStrategy from "passport-facebook";
+import InstagramStrategy from "passport-instagram";
 import User from "./models/User";
 import {
 	githubLoginCallback,
-	facebookLoginCallback
+	facebookLoginCallback,
+	instagramLoginCallback
 } from "./controllers/userController";
 import routes from "./routes";
 
@@ -47,5 +49,17 @@ passport.use(
 			]
 		},
 		facebookLoginCallback
+	)
+);
+
+// INSTAGRAM 인증서 사용 설정
+passport.use(
+	new InstagramStrategy(
+		{
+			clientID: process.env.INSTAGRAM_ID,
+			clientSecret: process.env.INSTAGRAM_SECRET,
+			callbackURL: `http://localhost:4000${routes.instagramCallback}`
+		},
+		instagramLoginCallback
 	)
 );

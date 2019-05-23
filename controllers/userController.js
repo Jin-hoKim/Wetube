@@ -124,6 +124,7 @@ export const facebookLoginCallback = async (
 		const user = await User.findOne({ email });
 		if (user) {
 			user.facebookId = id;
+			user.avatarUrl = `https://graph.facebook.com/${id}/picture?type=large`;
 			user.save();
 			return cb(null, user);
 		}
@@ -132,7 +133,8 @@ export const facebookLoginCallback = async (
 			email,
 			name: `${firstName} ${lastName}`,
 			facebookId: id,
-			avatarUrl: picture.data.url
+			avatarUrl: `https://graph.facebook.com/${id}/picture?type=large`
+			// avatarUrl: picture.data.url // 임시 URL
 		});
 		return cb(null, newUser);
 	} catch (error) {
@@ -141,6 +143,22 @@ export const facebookLoginCallback = async (
 };
 
 export const postFacebookLogin = (req, res) => {
+	res.redirect(routes.home);
+};
+
+export const instagramLogin = passport.authenticate("instagram");
+
+export const instagramLoginCallback = (
+	accessToken,
+	refreshToken,
+	profile,
+	cb
+) => {
+	console.log(profile);
+	return cb(null);
+};
+
+export const postInstagramLogin = (req, res) => {
 	res.redirect(routes.home);
 };
 

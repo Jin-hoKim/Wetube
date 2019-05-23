@@ -27,6 +27,10 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 const FACEBOOK = "/auth/facebook";
 const FACEBOOK_CALLBACK = "/auth/facebook/callback";
 
+// INSTAGRAM
+const INSTAGRAM = "/auth/instagram";
+const INSTAGRAM_CALLBACK = "/auth/instagram/callback";
+
 const routes = {
 	home: HOME,
 	join: JOIN,
@@ -61,7 +65,10 @@ const routes = {
 	githubCallback: GITHUB_CALLBACK,
 
 	facebook: FACEBOOK,
-	facebookCallback: FACEBOOK_CALLBACK
+	facebookCallback: FACEBOOK_CALLBACK,
+
+	instagram: INSTAGRAM,
+	instagramCallback: INSTAGRAM_CALLBACK
 };
 
 export default routes;

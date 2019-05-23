@@ -571,10 +571,10 @@ footer {
        -moz-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-  .social-login a span {
-    margin-right: 10px;
-    font-size: 20px;
-    font-weight: normal; }
+    .social-login a button span {
+      margin-right: 10px;
+      font-size: 15px;
+      font-weight: normal; }
   .social-login a:not(:last-child) {
     margin-bottom: 15px; }
 
@@ -591,6 +591,16 @@ footer {
 .social-login .social-login--facebook {
   background-color: #3a5998;
   color: white; }
+
+.social-login .social-login--instagram {
+  background-image: -webkit-gradient(linear, right top, left top, from(#BC32A4), color-stop(50%, #E03768), to(#F67C33));
+  background-image: -webkit-linear-gradient(right, #BC32A4 0%, #E03768 50%, #F67C33 100%);
+  background-image: -moz-linear-gradient(right, #BC32A4 0%, #E03768 50%, #F67C33 100%);
+  background-image: -o-linear-gradient(right, #BC32A4 0%, #E03768 50%, #F67C33 100%);
+  background-image: linear-gradient(270deg, #BC32A4 0%, #E03768 50%, #F67C33 100%);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); }
 
 .videoBlock video {
   margin-bottom: 10px;
