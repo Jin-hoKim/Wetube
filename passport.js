@@ -32,13 +32,20 @@ passport.use(
 );
 
 // FACEBOOK 인증서 사용설정
-// passport.use(
-// 	new FacebookStrategy(
-// 		{
-// 			clientID: process.env.FACEBOOK_ID,
-// 			clientSecret: process.env.FACEBOOK_SECRET,
-// 			callbackURL: `http://localhost:4000${routes.facebookCallback}`
-// 		},
-// 		facebookLoginCallback
-// 	)
-// );
+passport.use(
+	new FacebookStrategy(
+		{
+			clientID: process.env.FACEBOOK_ID,
+			clientSecret: process.env.FACEBOOK_SECRET,
+			callbackURL: `http://localhost:4000${routes.facebookCallback}`,
+			profileFields: [
+				"id",
+				"first_name",
+				"last_name",
+				"emails",
+				"picture.type(large)"
+			]
+		},
+		facebookLoginCallback
+	)
+);
