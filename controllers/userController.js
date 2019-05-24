@@ -3,33 +3,26 @@ import routes from "../routes";
 import User from "../models/User";
 
 export const users = (req, res) => {
-	res.render("userDetail.pug", { pageTitle: "User Home" });
+	res.redirect(routes.home);
 };
 
-export const userDetail = async (req, res) => {
-	const {
-		params: { id }
-	} = req;
-	try {
-		const user = await User.findById(id);
-		res.render("userDetail.pug", { pageTitle: "User Detail", user });
-	} catch (error) {
-		res.redirect(routes.home);
-	}
-};
-
-export const userEditProfile = (req, res) => {
-	res.render("userEditProfile.pug", { pageTitle: "User Edit Profiles" });
-};
-
-export const userChangePassword = (req, res) => {
-	res.render("userChangePassword.pug", { pageTitle: "Change Password" });
-};
-
+/**
+ * MEMBER JOIN - GET
+ * @method GET
+ * @param {*} req
+ * @param {*} res
+ */
 export const getJoin = (req, res) => {
 	res.render("join.pug", { pageTitle: "Join" });
 };
 
+/**
+ * MEMBER JOIN - POST
+ * PASSPORT-LOCAL-MONGOOSE를 이용하여 회원가입
+ * @param {} req
+ * @param {*} res
+ * @param {*} next : 다음 실행될 METHOD
+ */
 export const postJoin = async (req, res, next) => {
 	// console.log(req.body);
 	const {
@@ -57,21 +50,40 @@ export const postJoin = async (req, res, next) => {
 	}
 };
 
+/**
+ * WETUBE LOGIN - GET
+ * @method GET
+ * @param {*} req
+ * @param {*} res
+ */
 export const getLogin = (req, res) => {
 	res.render("login.pug", { pageTitle: "Login" });
 };
 
+/**
+ * WETUBE LOGIN - POST
+ * PASSPORT-LOCAL-MONGOOSE를 통해 로그인한다.
+ * @method POST
+ */
 export const postLogin = passport.authenticate("local", {
 	failureRedirect: routes.login,
 	successRedirect: routes.home
 });
 
-// export const postLogin = (req, res) => {
-// 	res.redirect(routes.home);
-// };
-
+/**
+ * GITHUB 계정으로 로그인 권한 검사
+ * @method GET
+ */
 export const githubLogin = passport.authenticate("github");
 
+/**
+ * GITHUB 계정으로 로그인 권한 검색 결과
+ * @param {*} accessToken : 사용안함
+ * @param {*} refreshToken : 사용안함
+ * @param {*} profile : GITHUB 사용자 정보
+ * @param {} cb : 다음 실행할 METHOD
+ * @returns {error, user} cb : 에러 또는 로그인/가입한 사용자 정보 반환
+ */
 export const githubLoginCallback = async (
 	accessToken,
 	refreshToken,
@@ -102,14 +114,30 @@ export const githubLoginCallback = async (
 	}
 };
 
+/**
+ * GITHUB 계정으로 로그인 / 회원가입 완료
+ * @param {*} req
+ * @param {*} res
+ */
 export const postGithubLogin = async (req, res) => {
 	res.redirect(routes.home);
 };
 
+/**
+ * FACEBOOK 계정으로 로그인 권한 검사 / EMAIL 정보 요청
+ */
 export const facebookLogin = passport.authenticate("facebook", {
 	scope: ["email"]
 });
 
+/**
+ * FACEBOOK 계정으로 로그인 권한 검삭 결과
+ * @param {*} accessToken : 사용안함
+ * @param {*} refreshToken : 사용안함
+ * @param {*} profile : 사용자 정보
+ * @param {*} cb : 다음 실행될 METHOD
+ * @returns {error, user} cb : 에러 또는 로그인/가입한 사용자 정보 반환
+ */
 export const facebookLoginCallback = async (
 	accessToken,
 	refreshToken,
@@ -142,12 +170,28 @@ export const facebookLoginCallback = async (
 	}
 };
 
+/**
+ * FACEBOOK 계정으로 로그인  / 회원가입 완료
+ * @param {*} req
+ * @param {*} res
+ */
 export const postFacebookLogin = (req, res) => {
 	res.redirect(routes.home);
 };
 
+/**
+ * INSTAGRAM 계정으로 로그인 권한 검사 (추후진행)
+ */
 export const instagramLogin = passport.authenticate("instagram");
 
+/**
+ * INSTAGRAM 계정으로 로그인 권한 검사 결과 (추후진행)
+ * @param {*} accessToken
+ * @param {*} refreshToken
+ * @param {*} profile : 사용자 정보
+ * @param {*} cb : 다음 실행될 METHOD
+ * @returns {error, user} cb : 에러 또는 로그인/가입한 사용자 정보 반환
+ */
 export const instagramLoginCallback = (
 	accessToken,
 	refreshToken,
@@ -158,17 +202,86 @@ export const instagramLoginCallback = (
 	return cb(null);
 };
 
+/**
+ * INSTAGRAM 계정으로 로그인 완료
+ * @param {*} req
+ * @param {*} res
+ */
 export const postInstagramLogin = (req, res) => {
 	res.redirect(routes.home);
 };
 
+/**
+ * 사용자 프로필 페이지
+ * @method GET
+ * @param {*} req
+ * @param {*} res
+ */
+export const getUserMe = (req, res) => {
+	res.render("userProfile.pug", { pageTitle: "User Profile", user: req.user });
+};
+
+/**
+ * 사용자 프로필 페이지
+ * @method GET
+ * @param {*} req
+ * @param {*} res
+ */
+export const userProfile = async (req, res) => {
+	try {
+		res.render("userProfile.pug", {
+			pageTitle: "User Profile",
+			user: req.user
+		});
+	} catch (error) {
+		res.redirect(routes.home);
+	}
+};
+
+/**
+ * 사용자 프로필 수정 - GET
+ * @method GET
+ * @param { user:User } req
+ * @param {*} res
+ */
+export const getUserEditProfile = (req, res) => {
+	res.render("userEditProfile.pug", {
+		pageTitle: "User Edit Profiles",
+		user: req.user
+	});
+};
+
+/**
+ * 사용자 프로필 수정 - POST
+ * @method POST
+ * @param { user:User } req
+ * @param {*} res
+ */
+export const postUserEditProfile = (req, res) => {
+	res.render("userEditProfile.pug", {
+		pageTitle: "User Edit Profiles",
+		user: req.user
+	});
+};
+
+/**
+ * 사용자 비밀번호 수정
+ * @param {*} req
+ * @param {*} res
+ */
+export const userChangePassword = (req, res) => {
+	res.render("userChangePassword.pug", { pageTitle: "Change Password" });
+};
+
+/**
+ * LOGOUT
+ * PASSPORT에서 LOGOUT 처리
+ * @param {*} req
+ * @param {*} res
+ */
 export const logout = (req, res) => {
 	// res.render("logout.pug", {pageTitle: "Logout"});
 	// to do :
 	req.logout();
 	res.redirect(routes.home);
-};
-
-export const getUserMe = (req, res) => {
-	res.render("userDetail.pug", { pageTitle: "User Detail", user: req.user });
 };

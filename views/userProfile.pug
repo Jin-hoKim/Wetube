@@ -1,0 +1,14 @@
+extends layouts/main
+block content
+    h1 #{pageTitle}
+    .user-profile
+        .user-profile__header
+            img.u-avatar(src=user.avatarUrl)
+            h4.profile__username=user.name
+    if user.id === loggedUser.id
+        .user-profile__buttons
+            a(href=routes.userEditProfile)
+                button
+                    i.fas.fa-pencil-alt
+                    span Edit Profile
+            a(href=`/us`)        

@@ -53,13 +53,13 @@ passport.use(
 );
 
 // INSTAGRAM 인증서 사용 설정
-passport.use(
-	new InstagramStrategy(
-		{
-			clientID: process.env.INSTAGRAM_ID,
-			clientSecret: process.env.INSTAGRAM_SECRET,
-			callbackURL: `http://localhost:4000${routes.instagramCallback}`
-		},
-		instagramLoginCallback
-	)
-);
+// passport.use(
+// 	new InstagramStrategy(
+// 		{
+// 			clientID: process.env.INSTAGRAM_ID,
+// 			clientSecret: process.env.INSTAGRAM_SECRET,
+// 			callbackURL: `http://localhost:4000${routes.instagramCallback}`
+// 		},
+// 		instagramLoginCallback
+// 	)
+// );
