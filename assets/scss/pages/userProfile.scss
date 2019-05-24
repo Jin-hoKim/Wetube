@@ -7,6 +7,10 @@
 
     .u-avatar {
         width: $commonWidth;
+
+        ion-icon {
+            font-size: $commonWidth;
+        }
     }
 
     .user-profile__header {
