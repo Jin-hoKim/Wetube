@@ -9,7 +9,7 @@ const SEARCH = "/search";
 const USERS = "/users";
 // const USER_DETAIL = "/:id";
 // const USER_EDIT_PROFILE = "/:id/edit-profile";
-const USER_PROFILE = "/profile";
+const USER_PROFILE = "/:id";
 const USER_EIDT_PROFILE = "/edit-profile";
 const USER_CHANGE_PASSWORD = "/:id/change-password";
 const USER_ME = "/me";
@@ -41,13 +41,9 @@ const routes = {
 	search: SEARCH,
 	users: USERS,
 	me: USER_ME,
-	// userDetail: id => {
-	// 	return id ? `${USERS}/${id}` : USER_DETAIL;
-	// },
-	userProfile: `${USER_PROFILE}`,
-	// userEditProfile: id => {
-	// 	return id ? `${USERS}/${id}/edit-profile` : USER_EDIT_PROFILE;
-	// },
+	userProfile: id => {
+		return id ? `${USERS}/${id}` : USER_PROFILE;
+	},
 	userEditProfile: `${USER_EIDT_PROFILE}`,
 	userChangePassword: id => {
 		return id ? `${USERS}/${id}/change-password` : USER_CHANGE_PASSWORD;

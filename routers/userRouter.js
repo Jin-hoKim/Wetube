@@ -19,7 +19,7 @@ userRouter.get(routes.userChangePassword(), onlyPrivate, userChangePassword);
 userRouter.get(routes.userEditProfile, onlyPrivate, getUserEditProfile);
 userRouter.post(routes.userEditProfile, onlyPrivate, postUserEditProfile);
 
-userRouter.get(routes.userProfile, userProfile);
+userRouter.get(routes.userProfile(), userProfile);
 
 userRouter.get(routes.logout, logout);
 

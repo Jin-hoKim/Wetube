@@ -217,8 +217,19 @@ export const postInstagramLogin = (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-export const getUserMe = (req, res) => {
-	res.render("userProfile.pug", { pageTitle: "User Profile", user: req.user });
+export const getUserMe = async (req, res) => {
+	console.log(req.user);
+
+	const {
+		user: { _id }
+	} = req;
+
+	try {
+		const user = await User.findById(_id);
+		res.render("userProfile.pug", { pageTitle: "Profile", user });
+	} catch (error) {
+		res.redirect(routes.home);
+	}
 };
 
 /**
@@ -228,11 +239,15 @@ export const getUserMe = (req, res) => {
  * @param {*} res
  */
 export const userProfile = async (req, res) => {
+	const {
+		params: { id }
+	} = req;
+
+	console.log(`params id : ${id}`);
+
 	try {
-		res.render("userProfile.pug", {
-			pageTitle: "User Profile",
-			user: req.user
-		});
+		const user = User.findById({ _id: id });
+		res.render("userProfile.pug", { pageTitle: "Profile", user });
 	} catch (error) {
 		res.redirect(routes.home);
 	}

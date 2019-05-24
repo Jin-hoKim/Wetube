@@ -3,12 +3,21 @@ block content
     h1 #{pageTitle}
     .user-profile
         .user-profile__header
-            img.u-avatar(src=user.avatarUrl)
-            h4.profile__username=user.name
+            if user.avatarUrl
+                .u-avatar
+                    img.u-avatar(src=user.avatarUrl)
+            else
+                .u-avatar    
+                    ion-icon(name="../assets/icons/icon_user/default.svg")
+            h4.profile__username=user.name  
     if user.id === loggedUser.id
         .user-profile__buttons
-            a(href=routes.userEditProfile)
-                button
+            .divider
+            a(href=`/users${routes.userEditProfile}`)
+                button.button-edit-profile
                     i.fas.fa-pencil-alt
                     span Edit Profile
-            a(href=`/us`)        
+            a(href=`/users${routes.userChangePassword}`)
+                button.button-changePassword
+                    i.fas.fa-user-lock
+                    span Change Password
