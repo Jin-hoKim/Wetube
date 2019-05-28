@@ -261,7 +261,7 @@ export const userProfile = async (req, res) => {
  */
 export const getUserEditProfile = (req, res) => {
 	res.render("userEditProfile.pug", {
-		pageTitle: "User Edit Profiles",
+		pageTitle: "Edit Profile",
 		user: req.user
 	});
 };
@@ -273,10 +273,12 @@ export const getUserEditProfile = (req, res) => {
  * @param {*} res
  */
 export const postUserEditProfile = (req, res) => {
-	res.render("userEditProfile.pug", {
-		pageTitle: "User Edit Profiles",
-		user: req.user
-	});
+	// res.render("userEditProfile.pug", {
+	// 	pageTitle: "User Edit Profiles",
+	// 	user: req.user
+	// });
+
+	console.log("asdfsadfasdf");
 };
 
 /**

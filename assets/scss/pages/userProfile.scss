@@ -8,6 +8,11 @@
     .u-avatar {
         width: $commonWidth;
 
+        img {
+            width: $commonWidth;
+            height: $commonWidth;
+        }
+
         ion-icon {
             font-size: $commonWidth;
         }

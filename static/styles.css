@@ -258,9 +258,6 @@ button {
   -webkit-box-shadow: 0px 7px 7px #444444;
      -moz-box-shadow: 0px 7px 7px #444444;
           box-shadow: 0px 7px 7px #444444; }
-  .u-avatar img {
-    display: block;
-    margin: auto; }
   .u-avatar ion-icon {
     font-size: 20px;
     color: #f5f5f5; }
@@ -491,12 +488,18 @@ footer {
     .form-container form input:not([type="file"]),
     .form-container form .fileUpload {
       width: 100%;
-      margin-bottom: 15px;
+      padding-bottom: 10px;
       padding-top: 10px;
       display: block;
       -webkit-border-radius: 5px;
          -moz-border-radius: 5px;
-              border-radius: 5px; }
+              border-radius: 5px;
+      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+         -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+      .form-container form input:not([type="file"]):not(:last-child),
+      .form-container form .fileUpload:not(:last-child) {
+        margin-bottom: 15px; }
     .form-container form textarea {
       width: 100%;
       min-height: 150px;
@@ -536,28 +539,28 @@ footer {
         font-weight: 400;
         color: rgba(0, 0, 0, 0.5);
         text-align: left; }
-    .form-container form a {
-      width: 100%;
-      max-width: 320px; }
-    .form-container form .fileUpload label {
-      margin-right: 10px;
-      font-weight: 300; }
-    .form-container form .form-container__buttons {
-      width: 100%;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: row;
-         -moz-box-orient: horizontal;
-         -moz-box-direction: normal;
-          -ms-flex-direction: row;
-              flex-direction: row; }
-      .form-container form .form-container__buttons button:first-child {
-        margin-right: 10px; }
+  .form-container a {
+    width: 100%;
+    max-width: 320px; }
+  .form-container .fileUpload label {
+    margin-right: 10px;
+    font-weight: 300; }
+  .form-container .form-container__buttons {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+       -moz-box-orient: horizontal;
+       -moz-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row; }
+    .form-container .form-container__buttons button:first-child {
+      margin-right: 10px; }
 
 .social-login {
   display: -webkit-box;
@@ -656,6 +659,9 @@ footer {
           justify-content: center; }
   .user-profile .u-avatar {
     width: 160px; }
+    .user-profile .u-avatar img {
+      width: 160px;
+      height: 160px; }
     .user-profile .u-avatar ion-icon {
       font-size: 160px; }
   .user-profile .user-profile__header {
