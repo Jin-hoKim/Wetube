@@ -8,7 +8,7 @@ import {
 	getUserEditProfile,
 	postUserEditProfile
 } from "../controllers/userController";
-import { onlyPrivate } from "../middlewares";
+import { onlyPrivate, uploadAvatar } from "../middlewares";
 
 const userRouter = express.Router();
 
@@ -17,7 +17,12 @@ userRouter.get(routes.users, users);
 userRouter.get(routes.userChangePassword(), onlyPrivate, userChangePassword);
 
 userRouter.get(routes.userEditProfile, onlyPrivate, getUserEditProfile);
-userRouter.post(routes.userEditProfile, onlyPrivate, postUserEditProfile);
+userRouter.post(
+	routes.userEditProfile,
+	onlyPrivate,
+	uploadAvatar,
+	postUserEditProfile
+);
 
 userRouter.get(routes.userProfile(), userProfile);
 

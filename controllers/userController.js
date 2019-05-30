@@ -272,11 +272,24 @@ export const getUserEditProfile = (req, res) => {
  * @param { user:User } req
  * @param {*} res
  */
-export const postUserEditProfile = (req, res) => {
-	// res.render("userEditProfile.pug", {
-	// 	pageTitle: "User Edit Profiles",
-	// 	user: req.user
-	// });
+export const postUserEditProfile = async (req, res) => {
+	const {
+		body: { name, email },
+		file
+	} = req;
+
+	try {
+		await User.findByIdAndUpdate(req.user.id, {
+			name,
+			email,
+			avatarUrl: file ? file.path : req.user.avatarUrl
+		});
+		res.redirect(routes.me);
+	} catch (error) {
+		res.render("userEditProfile.pug", {
+			pageTitle: "Edit Profile"
+		});
+	}
 
 	console.log("asdfsadfasdf");
 };
