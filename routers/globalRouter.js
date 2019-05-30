@@ -12,9 +12,9 @@ import {
 	postGithubLogin,
 	facebookLogin,
 	postFacebookLogin,
-	getUserMe,
 	instagramLogin,
-	postInstagramLogin
+	postInstagramLogin,
+	userProfile
 } from "../controllers/userController";
 import { onlyPublic, onlyPrivate } from "../middlewares";
 
@@ -51,6 +51,6 @@ globalRouter.get(
 	postInstagramLogin
 );
 
-globalRouter.get(routes.me, getUserMe);
+globalRouter.get(routes.me, userProfile);
 
 export default globalRouter;

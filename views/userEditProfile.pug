@@ -2,7 +2,7 @@ extends layouts/main
 block content
     h1 #{pageTitle}
     .form-container
-        form(action=`/users${routes.userEditProfile}`, id="editForm" method="post", enctype="multipart/form-data")
+        form(id="formUEP", action=`${routes.userEditProfile}`, method="post", enctype="multipart/form-data")
             .fileUpload
                 label(for="avatar") Avatar
                 input(type="file", id="avatar", name="avatar", accept="image/*")

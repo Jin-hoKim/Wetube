@@ -1,6 +1,6 @@
 import passport from "passport";
 import routes from "../routes";
-import User from "../models/User";
+import User, { TYPE_SOCIAL, TYPE_NORMAL } from "../models/User";
 
 export const users = (req, res) => {
 	res.redirect(routes.home);
@@ -38,6 +38,7 @@ export const postJoin = async (req, res, next) => {
 	} else {
 		try {
 			const user = await User({
+				type: TYPE_NORMAL,
 				name,
 				email
 			});
@@ -67,6 +68,7 @@ export const getLogin = (req, res) => {
  */
 export const postLogin = passport.authenticate("local", {
 	failureRedirect: routes.login,
+	failureFlash: "Invalid username or password",
 	successRedirect: routes.home
 });
 
@@ -98,11 +100,13 @@ export const githubLoginCallback = async (
 	try {
 		const user = await User.findOne({ email });
 		if (user) {
+			user.type = TYPE_SOCIAL;
 			user.githubId = id;
 			user.save();
 			return cb(null, user); // cb(error, user)
 		}
 		const newUser = await User.create({
+			type: TYPE_SOCIAL,
 			email,
 			name,
 			avatarUrl,
@@ -151,6 +155,7 @@ export const facebookLoginCallback = async (
 	try {
 		const user = await User.findOne({ email });
 		if (user) {
+			user.type = TYPE_SOCIAL;
 			user.facebookId = id;
 			user.avatarUrl = `https://graph.facebook.com/${id}/picture?type=large`;
 			user.save();
@@ -158,6 +163,7 @@ export const facebookLoginCallback = async (
 		}
 
 		const newUser = await User.create({
+			type: TYPE_SOCIAL,
 			email,
 			name: `${firstName} ${lastName}`,
 			facebookId: id,
@@ -217,36 +223,11 @@ export const postInstagramLogin = (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-export const getUserMe = async (req, res) => {
-	console.log(req.user);
-
-	const {
-		user: { _id }
-	} = req;
-
-	try {
-		const user = await User.findById(_id);
-		res.render("userProfile.pug", { pageTitle: "Profile", user });
-	} catch (error) {
-		res.redirect(routes.home);
-	}
-};
-
-/**
- * 사용자 프로필 페이지
- * @method GET
- * @param {*} req
- * @param {*} res
- */
 export const userProfile = async (req, res) => {
-	const {
-		params: { id }
-	} = req;
-
-	console.log(`params id : ${id}`);
+	console.log(">>>>>>>> userProfile <<<<<<<<<<<");
 
 	try {
-		const user = User.findById({ _id: id });
+		const user = await User.findById({ _id: req.user.id });
 		res.render("userProfile.pug", { pageTitle: "Profile", user });
 	} catch (error) {
 		res.redirect(routes.home);
@@ -260,6 +241,8 @@ export const userProfile = async (req, res) => {
  * @param {*} res
  */
 export const getUserEditProfile = (req, res) => {
+	console.log(">>>>>>>> getUserEditProfile <<<<<<<<<<<");
+
 	res.render("userEditProfile.pug", {
 		pageTitle: "Edit Profile",
 		user: req.user
@@ -286,21 +269,45 @@ export const postUserEditProfile = async (req, res) => {
 		});
 		res.redirect(routes.me);
 	} catch (error) {
-		res.render("userEditProfile.pug", {
-			pageTitle: "Edit Profile"
-		});
+		res.redirect(routes.userEditProfile);
 	}
-
-	console.log("asdfsadfasdf");
 };
 
 /**
  * 사용자 비밀번호 수정
+ * @method GET
  * @param {*} req
  * @param {*} res
  */
-export const userChangePassword = (req, res) => {
+export const getUserChangePassword = (req, res) => {
+	console.log(">>>>>>>> getUserChangePassword <<<<<<<<<<<");
+
 	res.render("userChangePassword.pug", { pageTitle: "Change Password" });
+};
+
+/**
+ * 사용자 비밀번호 수정
+ * @method POST
+ * @param {*} req
+ * @param {*} res
+ */
+export const postUserChangePassword = async (req, res) => {
+	const {
+		body: { oldPassword, newPassword, newPassword1 }
+	} = req;
+
+	try {
+		if (newPassword !== newPassword1) {
+			res.status(400);
+			res.redirect(routes.userChangePassword);
+			return;
+		}
+
+		await req.user.changePassword(oldPassword, newPassword);
+		res.redirect(routes.me);
+	} catch (error) {
+		res.redirect(routes.userChangePassword);
+	}
 };
 
 /**

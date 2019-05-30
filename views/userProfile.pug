@@ -13,11 +13,12 @@ block content
     if user.id === loggedUser.id
         .user-profile__buttons
             .divider
-            a(href=`/users${routes.userEditProfile}`)
+            a(href=routes.userEditProfile)
                 button.button-edit-profile
                     i.fas.fa-pencil-alt
                     span Edit Profile
-            a(href=`/users${routes.userChangePassword}`)
-                button.button-changePassword
-                    i.fas.fa-user-lock
-                    span Change Password
+            if user.type === "normal_user"
+                a(href=routes.userChangePassword)
+                    button.button-changePassword
+                        i.fas.fa-user-lock
+                        span Change Password

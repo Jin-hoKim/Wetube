@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 import passportLocalMongoose from "passport-local-mongoose";
 
+export const TYPE_SOCIAL = "social_user";
+export const TYPE_NORMAL = "normal_user";
+
 const UserSchema = new mongoose.Schema({
+	type: String,
 	name: String,
 	email: String,
 	avatarUrl: String,
