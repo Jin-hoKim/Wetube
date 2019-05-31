@@ -7,7 +7,7 @@ import {
 	githubLoginCallback,
 	facebookLoginCallback,
 	instagramLoginCallback
-} from "./controllers/userController";
+} from "./controllers/passportController";
 import routes from "./routes";
 
 // strategy : 로그인하는 방식, 인증하는 방식

@@ -45,8 +45,8 @@ const routes = {
 	userProfile: id => {
 		return id ? `${USERS}/${id}` : USER_PROFILE;
 	},
-	userEditProfile: `${USERS}${USER_EIDT_PROFILE}`,
-	userChangePassword: `${USERS}${USER_CHANGE_PASSWORD}`,
+	userEditProfile: USER_EIDT_PROFILE,
+	userChangePassword: USER_CHANGE_PASSWORD,
 
 	videos: VIDEOS,
 	videoDetail: id => {

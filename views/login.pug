@@ -3,8 +3,12 @@ block content
     h1 #{pageTitle}
     .form-container
         form(action=routes.login, method="post")
-            input(type="email", name="email", placeholder="Email", required="true")
-            input(type="password", name="password", placeholder="Password", required="true")
+            .form-group
+                label(for="email") Email
+                input(type="email", name="email", placeholder="abcd@efag@hijk.com", required="true")
+            .form-group
+                label(for="password") Password
+                input(type="password", name="password", placeholder="Password", required="true")
             .form-container__buttons
                 button.button-login(type="submit")
                     i.fas.fa-sign-in-alt 

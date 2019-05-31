@@ -2,12 +2,17 @@ extends layouts/main
 block content
     h1 #{pageTitle}
     .form-container
-        form(id="formUEP", action=`${routes.userEditProfile}`, method="post", enctype="multipart/form-data")
-            .fileUpload
-                label(for="avatar") Avatar
-                input(type="file", id="avatar", name="avatar", accept="image/*")
-            input(type="text", name="name", placeholder="Full Name", value=loggedUser.name)
-            input(type="email", name="email", placeholder="Email", value=loggedUser.email)
+        form(id="formUEP", action=`/users${routes.userEditProfile}`, method="post", enctype="multipart/form-data")
+            .form-group
+                .group-avata
+                    label(for="avatar") Avatar
+                    input(type="file", id="avatar", name="avatar", accept="image/*")
+            .form-group
+                label(for="name") Name
+                input(type="text", id="name", name="name", placeholder="Full Name", value=loggedUser.name)
+            .form-group
+                label(for="email") Email
+                input(type="email", id="email", name="email", placeholder="Email", value=loggedUser.email)
             button.button-edit-profile(onclick='document.querySelector("#editForm").submit()')
                 i.fas.fa-pencil-alt
                 span Update Profile

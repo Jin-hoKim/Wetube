@@ -3,10 +3,18 @@ block content
     h1 #{pageTitle}
     .form-container
         form(action=routes.join, method="post")
-            input(type="text", name="name", placeholder="Full Name", required="true")
-            input(type="email", name="email", placeholder="Email", required="true")
-            input(type="password", name="password", placeholder="Password", required="true")
-            input(type="password", name="password2", placeholder="Verify Password", required="true")
+            .form-group
+                label(for="name") Name
+                input(type="text", name="name", placeholder="Full Name", required="true")
+            .form-group
+                label(for="email") Email
+                input(type="email", name="email", placeholder="Email", required="true")
+            .form-group
+                label(for="password") Password
+                input(type="password", name="password", placeholder="Password", required="true")
+            .form-group
+                label(for="password2") Verify Password
+                input(type="password", name="password2", placeholder="Verify Password", required="true")
             .form-container__buttons
                 button.button-login(type="submit")
                     i.fas.fa-user-plus

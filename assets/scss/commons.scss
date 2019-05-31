@@ -29,7 +29,7 @@ textarea,
     background-color: white;
 
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 400;
     color: $black;
 
     i {
@@ -70,6 +70,8 @@ button {
 }
 
 .u-avatar {
+    position: relative;
+
     width: 100%;
     height: 100%;
 
@@ -86,6 +88,24 @@ button {
         color: $grey;
     }
 }
+
+.avatar-icon {
+    position: absolute;
+
+    width: 15px;
+    height: 15px;
+
+    background-size: cover;
+    display: inline-block;
+}
+
+// .icon-github {
+    //     background: url("../icon/icon_social_github.svg") no-repeat;
+    // }
+
+    // .icon-facebook {
+    //     background: url("../icon/icon_social_facebook.svg") no-repeat;
+    // }
 
 .divider {
     width: 100%;

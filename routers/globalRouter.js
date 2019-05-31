@@ -8,14 +8,16 @@ import {
 	getJoin,
 	postLogin,
 	getLogin,
+	userProfile
+} from "../controllers/userController";
+import {
 	githubLogin,
 	postGithubLogin,
 	facebookLogin,
 	postFacebookLogin,
 	instagramLogin,
-	postInstagramLogin,
-	userProfile
-} from "../controllers/userController";
+	postInstagramLogin
+} from "../controllers/passportController";
 import { onlyPublic, onlyPrivate } from "../middlewares";
 
 const globalRouter = express.Router();

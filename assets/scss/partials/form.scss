@@ -9,19 +9,26 @@
         width: 100%;
         max-width: 320px;
         margin-bottom: 15px;
+    }
 
-        input:not([type="file"]),
-        .fileUpload {
-            width: 100%;
-            padding-bottom: 10px;
-            padding-top: 10px;
-            display: block;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    a {
+        width: 100%;
+        max-width: 320px;
+    }
 
-            &:not(:last-child) {
-                margin-bottom: 15px;
-            }
+    .form-group {
+        padding: 0;
+
+        display: block;
+        border-radius: 5px;
+
+        background-color: $white;
+
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+        input[type="file"] {
+            padding-left: 5px;
+            padding-bottom: 5px;
         }
 
         textarea {
@@ -34,17 +41,18 @@
             @include placeholder(13px, 400);
             //box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
         }
-    }
 
-    a {
-        width: 100%;
-        max-width: 320px;
-    }
-
-    .fileUpload {
         label {
+            display: block;
+            padding-top: 5px;
+            padding-left: 5px;
             margin-right: 10px;
+            margin-bottom: 10px;
             font-weight: 600;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
         }
     }
 

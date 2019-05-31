@@ -98,7 +98,7 @@ export const getVideoEdit = async (req, res) => {
 	try {
 		const video = await Video.findById(id);
 		res.render("videoEdit.pug", {
-			pageTitle: `Edit ${video.title}`,
+			pageTitle: `Edit '${video.title}'`,
 			video
 		});
 	} catch (error) {
