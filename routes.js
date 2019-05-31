@@ -43,7 +43,7 @@ const routes = {
 	users: USERS,
 	me: USER_ME,
 	userProfile: id => {
-		return id ? `${USERS}/${id}` : USER_PROFILE;
+		return id ? `/users/${id}` : USER_PROFILE;
 	},
 	userEditProfile: USER_EIDT_PROFILE,
 	userChangePassword: USER_CHANGE_PASSWORD,

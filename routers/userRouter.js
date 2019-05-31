@@ -27,7 +27,7 @@ userRouter.post(
 	postUserEditProfile
 );
 
-// userRouter.get(routes.userProfile(), userProfile);
+userRouter.get(routes.userProfile(), userProfile);
 
 userRouter.get(routes.logout, logout);
 
