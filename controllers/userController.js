@@ -73,6 +73,22 @@ export const postLogin = passport.authenticate("local", {
 });
 
 /**
+ * 로그인한 사용자의 프로필 페이지
+ * @method GET
+ * @param {*} req
+ * @param {*} res
+ */
+export const userMe = async (req, res) => {
+	console.log(">>>>>>>>>>>> userMe <<<<<<<<<<<<");
+	try {
+		const user = await User.findById(req.user.id);
+		res.render("userProfile.pug", { pageTitle: "Profile", user });
+	} catch (error) {
+		res.redirect(routes.home);
+	}
+};
+
+/**
  * 사용자 프로필 페이지
  * @method GET
  * @param {*} req
@@ -81,8 +97,13 @@ export const postLogin = passport.authenticate("local", {
 export const userProfile = async (req, res) => {
 	console.log(">>>>>>>>>>>> userProfile <<<<<<<<<<<<");
 
+	const {
+		params: { id }
+	} = req;
+
 	try {
-		const user = await User.findById({ _id: req.user.id });
+		const user = await User.findById(id).populate("videos");
+		console.log(user);
 		res.render("userProfile.pug", { pageTitle: "Profile", user });
 	} catch (error) {
 		res.redirect(routes.home);

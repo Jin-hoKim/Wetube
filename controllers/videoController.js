@@ -101,10 +101,14 @@ export const getVideoEdit = async (req, res) => {
 
 	try {
 		const video = await Video.findById(id);
-		res.render("videoEdit.pug", {
-			pageTitle: `Edit '${video.title}'`,
-			video
-		});
+		if (video.creator !== req.user.id) {
+			throw Error();
+		} else {
+			res.render("videoEdit.pug", {
+				pageTitle: `Edit '${video.title}'`,
+				video
+			});
+		}
 	} catch (error) {
 		console.log(error);
 	}
@@ -141,10 +145,15 @@ export const videoDelete = async (req, res) => {
 	} = req;
 
 	try {
-		// https://mongoosejs.com/docs/api.html#query_Query-findOneAndRemove
-		await Video.findByIdAndRemove({
-			_id: id
-		});
+		const video = await Video.findById(id);
+		if (video.creator.id !== req.user.id) {
+			throw Error();
+		} else {
+			// https://mongoosejs.com/docs/api.html#query_Query-findOneAndRemove
+			await Video.findByIdAndRemove({
+				_id: id
+			});
+		}
 	} catch (error) {
 		console.log(error);
 	}

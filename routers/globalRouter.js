@@ -8,7 +8,7 @@ import {
 	getJoin,
 	postLogin,
 	getLogin,
-	userProfile
+	userMe
 } from "../controllers/userController";
 import {
 	githubLogin,
@@ -53,6 +53,6 @@ globalRouter.get(
 	postInstagramLogin
 );
 
-globalRouter.get(routes.me, userProfile);
+globalRouter.get(routes.me, userMe);
 
 export default globalRouter;
