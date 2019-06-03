@@ -4,3 +4,4 @@ package-lock.json
 .cache
 uploads
 static
+package.json
