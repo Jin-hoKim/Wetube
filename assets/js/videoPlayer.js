@@ -88,6 +88,7 @@ function getCurrentTime() {
 	currentTime.innerHTML = currentTimeString;
 
 	if (videoPlayer.ended) {
+		videoPlayer.currentTime = 0;
 		playButton.innerHTML = '<i class="fas fa-play"></i>';
 		clearInterval(videoIntervarId);
 	}
