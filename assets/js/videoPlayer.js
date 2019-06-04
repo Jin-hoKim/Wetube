@@ -5,6 +5,7 @@ const volumeButton = document.getElementById("jsVolumeButton");
 const fullScreenButton = document.getElementById("jsFullScreen");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
+const volumeControl = document.getElementById("jsVolume");
 
 let videoIntervarId;
 let isFullScreen = false;
@@ -100,12 +101,18 @@ function handleVideoPlayerLoaded() {
 	videoIntervarId = setInterval(getCurrentTime, 1000);
 }
 
+function hangleVolumeChange() {
+	videoPlayer.volume = volumeControl.value;
+}
+
 function init() {
 	playButton.addEventListener("click", handlerPlayClick);
 	volumeButton.addEventListener("click", handleVolumnClick);
 	fullScreenButton.addEventListener("click", handleFullScreenButton);
 
 	videoPlayer.addEventListener("loadedmetadata", handleVideoPlayerLoaded);
+
+	volumeControl.addEventListener("onchange", hangleVolumeChange);
 }
 
 if (videoContainer) {
