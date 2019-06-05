@@ -32,17 +32,19 @@ const hasGetUserMedia = () => {
 };
 
 const startRecod = async () => {
-	if (hasGetUserMedia()) {
-		recordContainer.disabled = false;
-
-		const mediaStream = await navigator.mediaDevices.getUserMedia({
-			// audio: true,
-			video: { width: 1280, height: 720 }
-		});
+	if (hasGetUserMedia) {
 		try {
+			recordContainer.disabled = false;
+			const mediaStream = await navigator.mediaDevices.getUserMedia({
+				// audio: true,
+				video: { width: 1280, height: 720 }
+			});
 			videoPreview.srcObject = mediaStream;
 			videoPreview.play();
 		} catch (err) {
+			recordButton.removeEventListener("click", handleStartRecord);
+			recordContainer.disabled = true;
+			console.log(err.message);
 			alert(err.message);
 		}
 	} else {
