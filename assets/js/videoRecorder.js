@@ -13,8 +13,13 @@ const hasGetUserMedia = () => {
 	);
 };
 
+const handleVideoData = event => {
+	console.log(event);
+};
+
 const startRecording = () => {
 	const videoRecorder = new MediaRecorder(mediaStream);
+	videoRecorder.addEventListener("dataavaliable", handleVideoData);
 	videoRecorder.start();
 	console.log(videoRecorder);
 };
