@@ -9,6 +9,7 @@ const volumeControl = document.getElementById("jsVolume");
 
 let videoIntervarId;
 let isFullScreen = false;
+let currentVolume = 0.5;
 
 const formatDate = seconds => {
 	const secondsNumber = parseInt(seconds, 10);
@@ -45,9 +46,11 @@ function handlerPlayClick() {
 function handleVolumnClick() {
 	if (videoPlayer.muted) {
 		videoPlayer.muted = false;
+		volumeControl.value = currentVolume;
 		volumeButton.innerHTML = '<i class="fas fa-volume-up"></i>';
 	} else {
 		videoPlayer.muted = true;
+		volumeControl.value = 0;
 		volumeButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
 	}
 }
@@ -102,6 +105,7 @@ function handleVideoPlayerLoaded() {
 }
 
 function hangleVolumeChange() {
+	currentVolume = volumeControl.value;
 	videoPlayer.volume = volumeControl.value;
 }
 
@@ -112,7 +116,7 @@ function init() {
 
 	videoPlayer.addEventListener("loadedmetadata", handleVideoPlayerLoaded);
 
-	volumeControl.addEventListener("onchange", hangleVolumeChange);
+	volumeControl.addEventListener("change", hangleVolumeChange);
 }
 
 if (videoContainer) {

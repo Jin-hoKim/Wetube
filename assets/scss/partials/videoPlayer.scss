@@ -2,6 +2,8 @@
     position: relative;
 
     &:hover {
+
+        .videoPlayer__volume,
         .videoPlayer__controls {
             opacity: 1;
         }
@@ -10,6 +12,24 @@
     video {
         width: 100%;
         max-width: 100%;
+    }
+
+    .videoPlayer__volume {
+        opacity: 0;
+        transition: opacity 0.4s linear;
+
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        z-index: 10;
+        bottom: 85px;
+        left: -25px;
+
+        position: absolute;
+
+        max-width: 80px;
+        max-height: 20px;
+        transform: rotate(-90deg);
     }
 
     .videoPlayer__controls {
@@ -34,6 +54,8 @@
         .videoPlayer__column:first-child {
             display: flex;
             align-items: center;
+
+            position: relative;
 
             span:first-child {
                 margin-right: 10px;
