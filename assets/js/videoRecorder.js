@@ -2,25 +2,7 @@ const recordContainer = document.getElementById("jsRecordContainer");
 const recordButton = document.getElementById("jsRecordButton");
 const videoPreview = document.getElementById("jsVideoPreview");
 
-const handleStartRecord = async () => {
-	try {
-		navigator.getUserMedia =
-			navigator.getUserMedia ||
-			navigator.webkitGetUserMedia ||
-			navigator.mozGetUserMedia;
-		const stream = await navigator.mediaDevices.getUserMedia({
-			// audio: false,
-			// video: true
-
-			audio: true
-		});
-
-		videoPreview.srcObject = stream;
-		videoPreview.play();
-	} catch (error) {
-		recordButton.innerHTML = "Can't record";
-	}
-};
+let mediaStream;
 
 const hasGetUserMedia = () => {
 	return !!(
@@ -31,30 +13,43 @@ const hasGetUserMedia = () => {
 	);
 };
 
-const startRecod = async () => {
+const startRecording = () => {
+	const videoRecorder = new MediaRecorder(mediaStream);
+	videoRecorder.start();
+	console.log(videoRecorder);
+};
+
+const getVideo = async () => {
 	if (hasGetUserMedia) {
 		try {
 			recordContainer.disabled = false;
-			const mediaStream = await navigator.mediaDevices.getUserMedia({
+
+			mediaStream = await navigator.mediaDevices.getUserMedia({
 				// audio: true,
 				video: { width: 1280, height: 720 }
 			});
+
 			videoPreview.srcObject = mediaStream;
 			videoPreview.play();
+
+			recordButton.innerHTML = "Stop Recording";
+
+			startRecording();
 		} catch (err) {
-			recordButton.removeEventListener("click", handleStartRecord);
-			recordContainer.disabled = true;
 			console.log(err.message);
 			alert(err.message);
+		} finally {
+			recordButton.removeEventListener("click", getVideo);
+			recordContainer.disabled = true;
 		}
 	} else {
-		recordButton.removeEventListener("click", handleStartRecord);
+		recordButton.removeEventListener("click", getVideo);
 		recordContainer.disabled = true;
 	}
 };
 
 function init() {
-	recordButton.addEventListener("click", startRecod);
+	recordButton.addEventListener("click", getVideo);
 }
 
 if (recordContainer) {
