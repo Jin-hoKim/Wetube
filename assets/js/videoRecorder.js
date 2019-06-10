@@ -4,6 +4,7 @@ const videoPreview = document.getElementById("jsVideoPreview");
 
 let mediaStream;
 let videoRecorder;
+let recordedVideoData;
 
 const hasGetUserMedia = () => {
 	return !!(
@@ -24,16 +25,17 @@ const handleVideoData = event => {
 };
 
 const stopRecording = () => {
+	recordButton.innerHTML =
+		"<i class='fas fa-video'></i><span>Start Recording</span>";
+
+	recordButton.removeEventListener("click", stopRecording);
+	recordButton.addEventListener("click", getVideo);
+
 	videoPreview.srcObject = null;
 	videoPreview.stop();
 
 	videoRecorder = null;
 	videoRecorder.stop();
-
-	recordButton.removeEventListener("click", stopRecording);
-	recordButton.addEventListener("click", getVideo);
-
-	recordButton.innerHTML = "Start Recording";
 };
 
 const startRecording = () => {
@@ -58,7 +60,8 @@ const getVideo = async () => {
 			videoPreview.srcObject = mediaStream;
 			videoPreview.play();
 
-			recordButton.innerHTML = "Stop Recording";
+			recordButton.innerHTML =
+				"<i class='fas fa-video-slash'></i><span>Stop Recording</span>";
 
 			startRecording();
 		} catch (err) {

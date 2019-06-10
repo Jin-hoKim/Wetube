@@ -4,7 +4,9 @@ block content
     .form-container
         .record-container#jsRecordContainer
             video#jsVideoPreview
-            button#jsRecordButton Start Recording
+            button#jsRecordButton
+                i.fas.fa-video
+                span Start Recording
         form(action=`/videos${routes.videoUpload}`, method="post", enctype="multipart/form-data")
             .form-group
                 label(for="file") Video File
