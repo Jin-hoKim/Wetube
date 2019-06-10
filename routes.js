@@ -33,6 +33,10 @@ const FACEBOOK_CALLBACK = "/auth/facebook/callback";
 const INSTAGRAM = "/auth/instagram";
 const INSTAGRAM_CALLBACK = "/auth/instagram/callback";
 
+// API : 서버와의 통신을 위한 URL
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
+
 const routes = {
 	home: HOME,
 	join: JOIN,
@@ -67,7 +71,10 @@ const routes = {
 	facebookCallback: FACEBOOK_CALLBACK,
 
 	instagram: INSTAGRAM,
-	instagramCallback: INSTAGRAM_CALLBACK
+	instagramCallback: INSTAGRAM_CALLBACK,
+
+	api: API,
+	registerView: REGISTER_VIEW
 };
 
 export default routes;
