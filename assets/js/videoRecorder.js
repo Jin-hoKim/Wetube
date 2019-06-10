@@ -3,6 +3,7 @@ const recordButton = document.getElementById("jsRecordButton");
 const videoPreview = document.getElementById("jsVideoPreview");
 
 let mediaStream;
+let videoRecorder;
 
 const hasGetUserMedia = () => {
 	return !!(
@@ -14,14 +15,34 @@ const hasGetUserMedia = () => {
 };
 
 const handleVideoData = event => {
-	console.log(event);
+	const { data: videoFile } = event;
+	const link = document.createElement("a");
+	link.href = URL.createObjectURL(videoFile);
+	link.download = "recorded.webm";
+	document.body.appendChild(link);
+	link.click();
+};
+
+const stopRecording = () => {
+	videoPreview.srcObject = null;
+	videoPreview.stop();
+
+	videoRecorder = null;
+	videoRecorder.stop();
+
+	recordButton.removeEventListener("click", stopRecording);
+	recordButton.addEventListener("click", getVideo);
+
+	recordButton.innerHTML = "Start Recording";
 };
 
 const startRecording = () => {
-	const videoRecorder = new MediaRecorder(mediaStream);
-	videoRecorder.addEventListener("dataavaliable", handleVideoData);
-	videoRecorder.start();
-	console.log(videoRecorder);
+	videoRecorder = new MediaRecorder(mediaStream);
+
+	// videoRecorder.start(1000); // 매초 비디오 데이터 추출
+	videoRecorder.start(); // 비디오 녹화 종료시 데이터 추출
+	videoRecorder.addEventListener("dataavailable", handleVideoData);
+	recordButton.addEventListener("click", stopRecording);
 };
 
 const getVideo = async () => {
