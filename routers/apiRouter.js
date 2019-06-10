@@ -4,6 +4,6 @@ import { postRegistView } from "../controllers/videoController";
 
 const apiRouter = express.Router();
 
-apiRouter.get(routes.registerView, postRegistView);
+apiRouter.post(routes.registerView, postRegistView);
 
 export default apiRouter;

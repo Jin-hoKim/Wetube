@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
 const playButton = document.getElementById("jsPlayButton");
@@ -6,6 +8,13 @@ const fullScreenButton = document.getElementById("jsFullScreen");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const volumeControl = document.getElementById("jsVolume");
+
+const registerView = () => {
+	const videoId = window.location.href.split("/videos/")[1];
+	fetch(`/api/${videoId}/view`, {
+		method: "POST"
+	});
+};
 
 let videoIntervarId;
 let isFullScreen = false;
@@ -92,6 +101,7 @@ function getCurrentTime() {
 	currentTime.innerHTML = currentTimeString;
 
 	if (videoPlayer.ended) {
+		registerView();
 		videoPlayer.currentTime = 0;
 		playButton.innerHTML = '<i class="fas fa-play"></i>';
 		clearInterval(videoIntervarId);
