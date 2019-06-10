@@ -16,21 +16,24 @@ const hasGetUserMedia = () => {
 };
 
 const handleVideoData = event => {
-	recordedVideoData = event.data;
+	// recordedVideoData = event.data;
+
+	const { data: videoFile } = event;
 
 	const link = document.createElement("a");
-	link.href = URL.createObjectURL(recordedVideoData);
+	link.href = URL.createObjectURL(videoFile);
 	link.download = "recorded.webm";
 	document.body.appendChild(link);
 	link.click();
 };
 
 const stopRecording = () => {
-	recordButton.innerHTML =
-		"<i class='fas fa-video'></i><span>Start Recording</span>";
-
+	recordButton.innerHTML = "<i class='fas fa-video'></i><span>Start Recording</span>";
+	
 	recordButton.removeEventListener("click", stopRecording);
 	recordButton.addEventListener("click", getVideo);
+	
+	videoRecorder.stop();
 };
 
 const startRecording = () => {
