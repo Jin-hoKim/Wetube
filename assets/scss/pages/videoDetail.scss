@@ -41,13 +41,34 @@
                 color: #2980b9;
             }
         }
+    }
 
-        .video__comments {
-            margin-top: 25px;
+    .video__comments {
+        text-align: center;
+        margin-top: 25px;
 
-            .view__comment-number {
-                font-size: 18px;
+        .view__comment-number {
+            font-size: 18px;
+        }
+
+        .add__comment {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .video__comments-list {
+            li {
+                background-color: #2980b9;
+                color: white;
+                padding: 15px;
+                border-radius: 20px;
+                border-bottom-left-radius: 0px;
+
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
             }
         }
     }
+
 }

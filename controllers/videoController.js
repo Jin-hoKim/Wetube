@@ -1,5 +1,7 @@
 import routes from "../routes";
+import User from "../models/User";
 import Video from "../models/Video";
+import Comment from "../models/Comment";
 
 export const home = async (req, res) => {
 	// res.send("Home");
@@ -82,10 +84,33 @@ export const videoDetail = async (req, res) => {
 	} = req;
 
 	try {
-		const video = await Video.findById(id).populate("creator");
+		const video = await Video.findById(id)
+			.populate("creator")
+			.populate("comments");
 		res.render("videoDetail.pug", {
 			pageTitle: video.title,
-			video
+			video,
+			dateFormat: dateString => {
+				const d = new Date(dateString);
+				// d.dateFormat("YY/MM/DD");
+				const yy = d
+					.getFullYear()
+					.toString()
+					.substr(2);
+				const mm = d.getMonth() + 1;
+				const dd = d.getDate();
+
+				return `${yy}.${mm < 10 ? `0${mm}` : mm}.${dd < 10 ? `0${dd}` : dd}`;
+			},
+			getCreator: async userId => {
+				try {
+					const u = await User.findById(userId);
+					console.log(u.name);
+					return u.email;
+				} catch (err) {
+					console.log(err);
+				}
+			}
 		});
 	} catch (error) {
 		console.log("--------------------------------------------");
@@ -174,6 +199,29 @@ export const postRegistView = async (req, res) => {
 	} catch (error) {
 		res.status(400); // ERROR
 		res.end();
+	} finally {
+		res.end();
+	}
+};
+
+export const postAddComment = async (req, res) => {
+	const {
+		params: { id },
+		body: { comment },
+		user
+	} = req;
+
+	try {
+		const video = await Video.findById(id);
+		const newComment = await Comment.create({
+			text: comment,
+			creator: user.id
+		});
+		video.comments.push(newComment.id);
+		video.save();
+	} catch (error) {
+		console.log(error);
+		res.status(400);
 	} finally {
 		res.end();
 	}

@@ -845,7 +845,23 @@ footer {
       font-size: 14px;
       font-weight: 600;
       color: #2980b9; }
-    .video-detail__container .video__info .video__comments {
-      margin-top: 25px; }
-      .video-detail__container .video__info .video__comments .view__comment-number {
-        font-size: 18px; }
+  .video-detail__container .video__comments {
+    text-align: center;
+    margin-top: 25px; }
+    .video-detail__container .video__comments .view__comment-number {
+      font-size: 18px; }
+    .video-detail__container .video__comments .add__comment {
+      margin-top: 15px;
+      margin-bottom: 15px; }
+    .video-detail__container .video__comments .video__comments-list li {
+      background-color: #2980b9;
+      color: white;
+      padding: 15px;
+      -webkit-border-radius: 20px;
+         -moz-border-radius: 20px;
+              border-radius: 20px;
+      -webkit-border-bottom-left-radius: 0px;
+         -moz-border-radius-bottomleft: 0px;
+              border-bottom-left-radius: 0px; }
+      .video-detail__container .video__comments .video__comments-list li:not(:last-child) {
+        margin-bottom: 10px; }
