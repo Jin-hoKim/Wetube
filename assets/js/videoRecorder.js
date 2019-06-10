@@ -16,9 +16,10 @@ const hasGetUserMedia = () => {
 };
 
 const handleVideoData = event => {
-	const { data: videoFile } = event;
+	recordedVideoData = event.data;
+
 	const link = document.createElement("a");
-	link.href = URL.createObjectURL(videoFile);
+	link.href = URL.createObjectURL(recordedVideoData);
 	link.download = "recorded.webm";
 	document.body.appendChild(link);
 	link.click();
@@ -30,12 +31,6 @@ const stopRecording = () => {
 
 	recordButton.removeEventListener("click", stopRecording);
 	recordButton.addEventListener("click", getVideo);
-
-	videoPreview.srcObject = null;
-	videoPreview.stop();
-
-	videoRecorder = null;
-	videoRecorder.stop();
 };
 
 const startRecording = () => {
