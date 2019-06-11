@@ -93,6 +93,12 @@
                 border-top-left-radius: 0px;
             }
 
+            .comment__remove {
+                margin-left: 5px;
+                color: red;
+                cursor: pointer;
+            }
+
             &:not(:last-child) {
                 margin-bottom: 15px;
             }

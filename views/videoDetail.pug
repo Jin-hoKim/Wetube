@@ -45,4 +45,8 @@ block content
                             span.comment__createAt
                                 | #{dateFormat(comment.createAt)}
                         span.comment__message=comment.text
+                        if loggedUser !== null && comment.creator.id === loggedUser.id
+                            a(href=routes.removeComment(video.id, comment.id))
+                                span.comment__remove#jsCommentRemove
+                                    i.fas.fa-trash-alt
         

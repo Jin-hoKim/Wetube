@@ -234,3 +234,18 @@ export const postAddComment = async (req, res) => {
 		res.end();
 	}
 };
+
+export const postRemoveComment = async (req, res) => {
+	const {
+		params: { id, commentid }
+	} = req;
+
+	try {
+		console.log(id, commentid);
+	} catch (error) {
+		console.log(error);
+		res.status(400);
+	} finally {
+		res.end();
+	}
+};

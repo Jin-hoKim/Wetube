@@ -920,5 +920,9 @@ footer {
         -webkit-border-top-left-radius: 0px;
            -moz-border-radius-topleft: 0px;
                 border-top-left-radius: 0px; }
+      .video-detail__container .video__comments li .comment__remove {
+        margin-left: 5px;
+        color: red;
+        cursor: pointer; }
       .video-detail__container .video__comments li:not(:last-child) {
         margin-bottom: 15px; }

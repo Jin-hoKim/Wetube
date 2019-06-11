@@ -39,6 +39,7 @@ const REGISTER_VIEW = "/:id/view";
 
 // comment
 const ADD_COMMENT = "/:id/comment";
+const REMOVE_COMMENT = "/:id/:commentid/comment";
 
 const routes = {
 	home: HOME,
@@ -78,7 +79,10 @@ const routes = {
 
 	api: API,
 	registerView: REGISTER_VIEW,
-	addComment: ADD_COMMENT
+	addComment: ADD_COMMENT,
+	removeComment: (id, commentid) => {
+		return `${API}/${id}/${commentid}/comment`;
+	}
 };
 
 export default routes;

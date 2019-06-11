@@ -106,7 +106,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _videoPlayer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./videoPlayer.js */ \"./assets/js/videoPlayer.js\");\n/* harmony import */ var _videoRecorder_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoRecorder.js */ \"./assets/js/videoRecorder.js\");\n/* harmony import */ var _videoRecorder_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_videoRecorder_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _addComment_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./addComment.js */ \"./assets/js/addComment.js\");\n\n\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _videoPlayer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./videoPlayer.js */ \"./assets/js/videoPlayer.js\");\n/* harmony import */ var _videoRecorder_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoRecorder.js */ \"./assets/js/videoRecorder.js\");\n/* harmony import */ var _videoRecorder_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_videoRecorder_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _addComment_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./addComment.js */ \"./assets/js/addComment.js\");\n/* harmony import */ var _removeComment_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./removeComment.js */ \"./assets/js/removeComment.js\");\n\n\n\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
+
+/***/ }),
+
+/***/ "./assets/js/removeComment.js":
+/*!************************************!*\
+  !*** ./assets/js/removeComment.js ***!
+  \************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar commentNumber = document.getElementById(\"jsCommentNumber\");\nvar commentRemove = document.getElementById(\"jsCommentRemove\");\nvar commentId = document.getElements;\n\nvar decreaseNumber = function decreaseNumber() {\n  commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) - 1;\n};\n\nvar handleRemoveComment = function handleRemoveComment() {\n  console.log(commentRemove);\n  decreaseNumber();\n};\n\nfunction init() {\n  commentRemove.addEventListener(\"click\", handleRemoveComment);\n}\n\nif (commentRemove) init();\n\n//# sourceURL=webpack:///./assets/js/removeComment.js?");
 
 /***/ }),
 
