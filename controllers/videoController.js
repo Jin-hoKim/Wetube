@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import routes from "../routes";
 import User from "../models/User";
 import Video from "../models/Video";
@@ -86,9 +87,16 @@ export const videoDetail = async (req, res) => {
 	try {
 		const video = await Video.findById(id)
 			.populate("creator")
-			.populate("comments");
+			.populate({
+				path: "comments",
+				populate: {
+					path: "creator",
+					model: User
+				}
+			}); // >>  nested populate
 		res.render("videoDetail.pug", {
 			pageTitle: video.title,
+			user: req.user,
 			video,
 			dateFormat: dateString => {
 				const d = new Date(dateString);
@@ -101,16 +109,16 @@ export const videoDetail = async (req, res) => {
 				const dd = d.getDate();
 
 				return `${yy}.${mm < 10 ? `0${mm}` : mm}.${dd < 10 ? `0${dd}` : dd}`;
-			},
-			getCreator: async userId => {
-				try {
-					const u = await User.findById(userId);
-					console.log(u.name);
-					return u.email;
-				} catch (err) {
-					console.log(err);
-				}
 			}
+			// ,
+			// getCreator: async userId => {
+			// 	try {
+			// 		const u = await User.findById(userId);
+			// 		return u.avatarUrl;
+			// 	} catch (err) {
+			// 		console.log(err);
+			// 	}
+			// }
 		});
 	} catch (error) {
 		console.log("--------------------------------------------");

@@ -56,19 +56,49 @@
             margin-bottom: 15px;
         }
 
-        .video__comments-list {
-            li {
-                background-color: #2980b9;
+        ul {
+            max-height: 300px;
+            overflow: auto;
+            padding: 5px;
+        }
+
+        li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .comment__created {
+                img {
+                    width: 30px;
+                    border-radius: 50%;
+                }
+
+                max-width: 150px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                text-align: right;
+            }
+
+            .comment__message {
+                text-align: left;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                max-width: 150px;
+                margin-left: 15px;
+                background: linear-gradient(rgb(255, 143, 178) 0%, rgb(167, 151, 255) 50%, rgb(0, 229, 255) 100%);
                 color: white;
                 padding: 15px;
                 border-radius: 20px;
-                border-bottom-left-radius: 0px;
-
-                &:not(:last-child) {
-                    margin-bottom: 10px;
-                }
+                border-top-left-radius: 0px;
             }
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+
         }
+
     }
 
 }

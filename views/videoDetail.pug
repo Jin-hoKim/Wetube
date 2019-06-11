@@ -27,18 +27,22 @@ block content
             if video.comments.length === 0
                 span.video__comment-number No Comment
             else if video.comments.length === 1
-                span.video__comment-number 1 Comment
+                span.video__comment-number
+                    span#jsCommentNumber 1 
+                    |  Comment
             else
-                span.video__comment-number #{video.comments.length} Comments
+                span.video__comment-number
+                    span#jsCommentNumber=video.comments.length
+                    |  Comments
             form.add__comment#jsAddComment
                 input(type="text", placeholder="Add a comment", name="comment")
-            ul.video__comments-list
-                each comment in video.comments
-                    .comment__created
-                        span.comment__creator
-                            | #{getCreator(comment.creator)}
-                        span.comment__createAt
-                            | #{dateFormat(comment.createAt)}
-                    li
-                        span=comment.text
+            ul#jsCommentList
+                each comment in video.comments.reverse()
+                    li 
+                        .comment__created
+                            //- img(src=comment.creator.avatarUrl).comment__avatar
+                            span.comment__creator=comment.creator.name
+                            span.comment__createAt
+                                | #{dateFormat(comment.createAt)}
+                        span.comment__message=comment.text
         
