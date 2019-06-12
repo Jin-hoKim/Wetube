@@ -4,6 +4,44 @@ const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList");
 const commentNumber = document.getElementById("jsCommentNumber");
 
+const deleteChild = commentId => {
+	for (let i = 0; i < commentList.children.length; i++) {
+		if (
+			commentList.children[i].querySelector(".comment__delete").id === commentId
+		) {
+			commentList.removeChild(commentList.children[i]);
+			break;
+		}
+	}
+};
+
+const decreaseNumber = () => {
+	commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) - 1;
+};
+
+const handleRemoveComment = async event => {
+	const videoId = window.location.href.split("/videos/")[1];
+	const commentId = event.target.parentElement.id;
+
+	console.log(
+		`handle remove comment - videoId : ${videoId} / commentId : ${commentId}`
+	);
+
+	const response = await axios({
+		url: `/api/${commentId}/delete-comment`,
+		method: "POST",
+		data: {
+			videoid: videoId,
+			commentid: commentId
+		}
+	});
+
+	if (response.status === 200) {
+		deleteChild(commentId);
+		decreaseNumber();
+	}
+};
+
 const increaseNumber = () => {
 	commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
 };
@@ -39,6 +77,7 @@ const addComment = async (videoId, comment, loggedUser, commentId) => {
 	const del = document.createElement("span");
 	del.className = "comment__delete";
 	del.id = commentId;
+	del.addEventListener("click", handleRemoveComment);
 
 	const icon = document.createElement("i");
 	icon.className = "fas fa-trash-alt";
