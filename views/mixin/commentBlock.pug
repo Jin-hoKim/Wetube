@@ -1,0 +1,10 @@
+mixin commentBlock(comment={}, loggedUser={})
+    li
+        .comment__created
+            span.comment__creator=comment.creator["name"]
+            span.comment__createAt
+                | #{dateFormat(comment.createAt)}
+        span.comment__message=comment.text
+        if loggedUser && comment.creator.id === loggedUser.id
+            span(id=comment.id).comment__delete
+                i.fas.fa-trash-alt

@@ -1,6 +1,7 @@
 extends layouts/main
 include mixin/videoBlock
 include mixin/videoPlayer
+include mixin/commentBlock
 
 block content
     h1 #{pageTitle}
@@ -35,18 +36,18 @@ block content
                     span#jsCommentNumber=video.comments.length
                     |  Comments
             form.add__comment#jsAddComment
-                input(type="text", placeholder="Add a comment", name="comment")
+                input(type="text", placeholder="Add a comment", name="comment", id=loggedUser.name)
             ul#jsCommentList
                 each comment in video.comments.reverse()
-                    li 
-                        .comment__created
-                            //- img(src=comment.creator.avatarUrl).comment__avatar
-                            span.comment__creator=comment.creator.name
-                            span.comment__createAt
-                                | #{dateFormat(comment.createAt)}
-                        span.comment__message=comment.text
-                        if loggedUser !== null && comment.creator.id === loggedUser.id
-                            a(href=routes.removeComment(video.id, comment.id))
-                                span.comment__remove#jsCommentRemove
-                                    i.fas.fa-trash-alt
+                    +commentBlock(comment, loggedUser)
+                    //- li 
+                    //-     .comment__created
+                    //-         //- img(src=comment.creator.avatarUrl).comment__avatar
+                    //-         span.comment__creator=comment.creator.name
+                    //-         span.comment__createAt
+                    //-             | #{dateFormat(comment.createAt)}
+                    //-     span.comment__message=comment.text
+                    //-     if loggedUser !== null && comment.creator.id === loggedUser.id
+                    //-         span(id=comment.id).comment__delete
+                    //-             i.fas.fa-trash-alt
         

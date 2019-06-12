@@ -920,7 +920,7 @@ footer {
         -webkit-border-top-left-radius: 0px;
            -moz-border-radius-topleft: 0px;
                 border-top-left-radius: 0px; }
-      .video-detail__container .video__comments li .comment__remove {
+      .video-detail__container .video__comments li .comment__delete {
         margin-left: 5px;
         color: red;
         cursor: pointer; }

@@ -8,19 +8,7 @@ const increaseNumber = () => {
 	commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
 };
 
-const addComment = comment => {
-	const li = document.createElement("li");
-
-	const div = document.createElement("div");
-	div.className = "comment__created";
-
-	const creator = document.createElement("span");
-	creator.className = "comment__creator";
-	creator.innerHTML = "asdfas";
-
-	const createAt = document.createElement("span");
-	createAt.className = "comment__createAt";
-
+const addComment = async (videoId, comment, loggedUser, commentId) => {
 	const date = new Date();
 	const yy = date
 		.getFullYear()
@@ -28,25 +16,46 @@ const addComment = comment => {
 		.substr(2);
 	const mm = date.getMonth() + 1;
 	const dd = date.getDate();
+
+	const li = document.createElement("li");
+
+	const created = document.createElement("div");
+	created.className = "comment__created";
+
+	const creator = document.createElement("span");
+	creator.className = "comment__creator";
+	creator.innerHTML = loggedUser;
+
+	const createAt = document.createElement("span");
+	createAt.className = "comment__createAt";
 	createAt.innerHTML = `${yy}.${mm < 10 ? `0${mm}` : mm}.${
 		dd < 10 ? `0${dd}` : dd
 	}`;
 
-	div.appendChild(creator);
-	div.appendChild(createAt);
+	const message = document.createElement("span");
+	message.className = "comment__message";
+	message.innerHTML = comment;
 
-	const span = document.createElement("span");
-	span.className = "comment__message";
-	span.innerHTML = comment;
+	const del = document.createElement("span");
+	del.className = "comment__delete";
+	del.id = commentId;
 
-	li.appendChild(div);
-	li.appendChild(span);
+	const icon = document.createElement("i");
+	icon.className = "fas fa-trash-alt";
+	del.appendChild(icon);
+
+	created.appendChild(creator);
+	created.appendChild(createAt);
+
+	li.appendChild(created);
+	li.appendChild(message);
+	li.appendChild(del);
 
 	commentList.prepend(li);
 	increaseNumber();
 };
 
-const sendComment = async comment => {
+const sendComment = async (comment, loggedUser) => {
 	const videoId = window.location.href.split("/videos/")[1];
 	const response = await axios({
 		url: `/api/${videoId}/comment`,
@@ -56,19 +65,18 @@ const sendComment = async comment => {
 		}
 	});
 
-	console.log("comment");
-	console.log(response.status);
-
 	if (response.status === 200) {
-		addComment(comment);
+		console.log(response.data);
+		addComment(videoId, comment, loggedUser, response.data.commentid);
 	}
 };
 
 const handleSubmit = event => {
 	event.preventDefault();
 	const commentInput = addCommentForm.querySelector("input");
+	const loggedUser = commentInput.id;
 	const comment = commentInput.value;
-	sendComment(comment);
+	sendComment(comment, loggedUser);
 	commentInput.value = "";
 };
 
